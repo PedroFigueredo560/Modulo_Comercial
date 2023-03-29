@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+version="2.0">
+
+<persistence-unit name="tarefas">
+
+<!-- provedor/implementacao do JPA -->
+<provider>org.hibernate.ejb.HibernatePersistence</provider>
+<!-- entidade mapaeada -->
+<class>br.com.caelum.moduloComercial.modelo.funcionario</class>
+<class>br.com.caelum.moduloComercial.modelo.cliente</class>
+<class>br.com.caelum.moduloComercial.modelo.lojas</class>
+<class>br.com.caelum.moduloComercial.modelo.produtos</class>
+
+<properties>
+<!-- dados da conexao -->
+<property name="javax.persistence.jdbc.driver"
+value="com.mysql.jdbc.Driver" />
+<property name="javax.persistence.jdbc.url"
+value="jdbc:mysql://localhost:3306/Tarefa?serverTimezone=UTC" />
+<property name="javax.persistence.jdbc.user" value="root" />
+<property name="javax.persistence.jdbc.password" value="Pedro560" />
+<!-- propriedades do hibernate -->
+<property name="hibernate.dialect"
+
+value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+
+<property name="hibernate.show_sql" value="true" />
+<property name="hibernate.format_sql" value="true" />
+<!-- atualiza o banco, gera as tableas se for preciso -->
+<property name="hibernate.hbm2ddl.auto" value="update" />
+</properties>
+</persistence-unit>
+</persistence>
