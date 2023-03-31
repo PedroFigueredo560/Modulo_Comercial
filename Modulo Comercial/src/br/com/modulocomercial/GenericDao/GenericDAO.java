@@ -7,6 +7,7 @@ package br.com.modulocomercial.GenericDAO;
 import br.com.modulocomercial.AbstractEntity;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,9 +15,10 @@ import javax.persistence.Persistence;
 /**
  *
  * @author ph715
+ * @param <T>
  */
 @SuppressWarnings("Unchecked")
-public class GenericDAO<T extends AbstractEntity> {
+public class GenericDAO<T extends AbstractEntity> implements IGenericDAO<Entity> {
     protected static EntityManager entityManager;
     //criando manager
     static{
