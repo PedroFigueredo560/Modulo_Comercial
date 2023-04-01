@@ -7,7 +7,7 @@ package br.com.modulocomercial.funcionario.service;
 import br.com.modulocomercial.funcionario.model.Funcionario;
 import br.com.modulocomercial.exception.BusinessException;        
 import br.com.modulocomercial.funcionario.dao.FuncionarioDao;
-import br.com.modulocomercial.GenericDao.IGenericDAO;
+import br.com.modulocomercial.infrastructure.dao.IBaseDAO;
 import br.com.modulocomercial.funcionario.dao.IFuncionarioDao;
 import java.util.List;
 

@@ -2,17 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package br.com.modulocomercial.GenericDao;
+package br.com.modulocomercial.infrastructure.dao;
 
 import br.com.modulocomercial.infrastructure.model.PersistenceEntity;
 import java.util.List;
-
 /**
  *
  * @author Pedro Henrique
+ * @param <Entity>
  */
-public interface IGenericDAO<Entity extends PersistenceEntity> {
-     Entity save(Entity obj);
+public interface IBaseDAO <Entity extends PersistenceEntity> {
+    
+    /**
+     * Salva uma instância de uma entidade persistente no banco de dados.
+     * 
+     * @param obj a instância que é inserida
+     * @return a entidade
+     */
+    Entity save(Entity obj);
 
     /**
      * Update an instance of the persistent entity in the system database.

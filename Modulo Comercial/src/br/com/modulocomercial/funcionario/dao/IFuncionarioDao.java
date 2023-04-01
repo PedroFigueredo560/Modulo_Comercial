@@ -5,13 +5,13 @@
 package br.com.modulocomercial.funcionario.dao;
 
 import java.util.List;
-import br.com.modulocomercial.GenericDao.IGenericDAO;
+import br.com.modulocomercial.infrastructure.dao.IBaseDAO;
 import br.com.modulocomercial.funcionario.model.Funcionario;
 
 /**
  *
  * @author Pedro Henrique
  */
-public interface IFuncionarioDao extends IGenericDAO<Funcionario> {
+public interface IFuncionarioDao extends IBaseDAO<Funcionario> {
      public abstract List<Funcionario> findById(String name);
 }

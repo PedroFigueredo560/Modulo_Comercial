@@ -4,7 +4,7 @@
  */
 package br.com.modulocomercial.funcionario.dao;
 
-import br.com.modulocomercial.GenericDAO.GenericDAO;
+import br.com.modulocomercial.infrastructure.dao.BaseDAO;
 import br.com.modulocomercial.funcionario.model.Funcionario;
 import java.util.List;
 import javax.persistence.Query;
@@ -13,7 +13,7 @@ import javax.persistence.Query;
  *
  * @author Pedro Henrique
  */
-public class FuncionarioDao extends GenericDAO<Funcionario> implements IFuncionarioDao {
+public class FuncionarioDao extends BaseDAO<Funcionario> implements IFuncionarioDao {
      
     @Override
     public List<Funcionario> findById(String name) {
