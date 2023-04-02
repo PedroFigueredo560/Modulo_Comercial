@@ -52,7 +52,7 @@ public class Principal_Scren extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tela Login");
+        setTitle("Login");
         setMinimumSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(null);
 
