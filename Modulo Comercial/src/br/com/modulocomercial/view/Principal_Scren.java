@@ -76,7 +76,7 @@ public class Principal_Scren extends javax.swing.JFrame {
             .addGroup(jPanelLSLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabelMD)
-                .addContainerGap(409, Short.MAX_VALUE))
+                .addContainerGap(396, Short.MAX_VALUE))
         );
         jPanelLSLayout.setVerticalGroup(
             jPanelLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +113,7 @@ public class Principal_Scren extends javax.swing.JFrame {
         LOGINBUTTON.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         LOGINBUTTON.setForeground(new java.awt.Color(102, 204, 0));
         LOGINBUTTON.setText("Login");
-        LOGINBUTTON.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        LOGINBUTTON.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LOGINBUTTON.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LOGINBUTTONActionPerformed(evt);
@@ -126,7 +126,7 @@ public class Principal_Scren extends javax.swing.JFrame {
         CANCELBUTTON.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         CANCELBUTTON.setForeground(new java.awt.Color(204, 0, 0));
         CANCELBUTTON.setText("Cancel");
-        CANCELBUTTON.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        CANCELBUTTON.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CANCELBUTTON.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CANCELBUTTONActionPerformed(evt);
@@ -140,7 +140,7 @@ public class Principal_Scren extends javax.swing.JFrame {
         jCheckBoxEmployee.setText("Funcionário");
         jCheckBoxEmployee.setBorder(null);
         jCheckBoxEmployee.setContentAreaFilled(false);
-        jCheckBoxEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBoxEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jCheckBoxEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCheckBoxEmployeeMouseClicked(evt);
@@ -158,7 +158,7 @@ public class Principal_Scren extends javax.swing.JFrame {
         jCheckBoxUser.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBoxUser.setText("Usuário");
         jCheckBoxUser.setContentAreaFilled(false);
-        jCheckBoxUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBoxUser.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jCheckBoxUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCheckBoxUserMouseClicked(evt);
@@ -195,17 +195,15 @@ public class Principal_Scren extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelNEWRegister);
-        jLabelNEWRegister.setBounds(320, 400, 260, 15);
+        jLabelNEWRegister.setBounds(320, 400, 260, 16);
 
-        jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/SP_TECH-removebg-preview.png"))); // NOI18N
-        jLabelLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/SP_TECH-removebg-preview.png"))); // NOI18N
         jPanel1.add(jLabelLogo);
-        jLabelLogo.setBounds(-20, 90, 410, 330);
+        jLabelLogo.setBounds(-60, 90, 410, 280);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(7, 60, 590, 420);
+        jLabel4.setBounds(0, 60, 600, 420);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(-10, -10, 600, 480);
