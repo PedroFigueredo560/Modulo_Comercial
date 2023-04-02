@@ -52,7 +52,7 @@ public class Principal_Scren extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Login");
+        setTitle("Tela Login");
         setMinimumSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(null);
 
@@ -200,9 +200,6 @@ public class Principal_Scren extends javax.swing.JFrame {
         jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/SP_TECH-removebg-preview.png"))); // NOI18N
         jLabelLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabelLogo.setMaximumSize(new java.awt.Dimension(0, 0));
-        jLabelLogo.setMinimumSize(new java.awt.Dimension(0, 0));
-        jLabelLogo.setPreferredSize(new java.awt.Dimension(0, 0));
         jPanel1.add(jLabelLogo);
         jLabelLogo.setBounds(-20, 90, 410, 330);
 
