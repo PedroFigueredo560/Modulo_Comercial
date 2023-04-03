@@ -197,7 +197,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jPanelRS.add(jLabelNameES);
         jLabelNameES.setBounds(80, 90, 50, 20);
 
-        jLabelBackgroundES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jLabelBackgroundES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanelRS.add(jLabelBackgroundES);
         jLabelBackgroundES.setBounds(0, 50, 380, 370);
 

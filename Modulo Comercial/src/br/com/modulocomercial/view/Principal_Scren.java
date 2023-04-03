@@ -199,12 +199,12 @@ public class Principal_Scren extends javax.swing.JFrame {
         jLabelNEWRegister.setBounds(330, 400, 240, 21);
 
         jLabelLogoLS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelLogoLS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/SP_TECH-removebg-preview.png"))); // NOI18N
+        jLabelLogoLS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/SP_TECH-removebg-preview.png"))); // NOI18N
         jLabelLogoLS.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanelNLS.add(jLabelLogoLS);
         jLabelLogoLS.setBounds(-20, 90, 410, 330);
 
-        jLabelBackgroundLS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jLabelBackgroundLS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanelNLS.add(jLabelBackgroundLS);
         jLabelBackgroundLS.setBounds(7, 60, 590, 420);
 
