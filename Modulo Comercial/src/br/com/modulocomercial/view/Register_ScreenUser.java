@@ -147,7 +147,7 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         getContentPane().add(jLabelNameUS);
         jLabelNameUS.setBounds(80, 90, 50, 20);
 
-        jBackgroundUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jBackgroundUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         getContentPane().add(jBackgroundUS);
         jBackgroundUS.setBounds(0, 50, 380, 310);
 
