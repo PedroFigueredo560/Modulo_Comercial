@@ -1,4 +1,7 @@
 package br.com.modulocomercial.view;
+
+import javax.swing.JFrame;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,6 +12,7 @@ package br.com.modulocomercial.view;
  * @author joanb
  */
 
+
 public class Register_ScreenFunc extends javax.swing.JFrame {
 
     /**
@@ -16,6 +20,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
      */
     public Register_ScreenFunc() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,7 +33,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelRS = new javax.swing.JPanel();
         jPanelES = new javax.swing.JPanel();
         jLabelEmployeeRegis = new javax.swing.JLabel();
         jTextFieldCPFES = new javax.swing.JFormattedTextField();
@@ -36,30 +41,31 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jTextFieldUsernameES = new javax.swing.JFormattedTextField();
         jTextFieldPasswordES = new javax.swing.JFormattedTextField();
         jComboBoxFunctionES = new javax.swing.JComboBox<>();
-        jButtonRETURN = new javax.swing.JButton();
-        jButtonREGISTER = new javax.swing.JButton();
+        jButtonRETURNES = new javax.swing.JButton();
+        jButtonREGISTERES = new javax.swing.JButton();
         jLabelFunctionES = new javax.swing.JLabel();
         jLabelCPFES = new javax.swing.JLabel();
         jLabelPasswordES = new javax.swing.JLabel();
         jLabelUsernameES = new javax.swing.JLabel();
         jLabelNameES = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelBackgroundES = new javax.swing.JLabel();
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jLabel4.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Register Screen");
 
-        jPanel1.setBackground(new java.awt.Color(33, 54, 76));
-        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel1.setMaximumSize(new java.awt.Dimension(0, 0));
-        jPanel1.setMinimumSize(new java.awt.Dimension(600, 400));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 470));
-        jPanel1.setLayout(null);
+        jPanelRS.setBackground(new java.awt.Color(33, 54, 76));
+        jPanelRS.setForeground(new java.awt.Color(204, 204, 204));
+        jPanelRS.setMaximumSize(new java.awt.Dimension(0, 0));
+        jPanelRS.setMinimumSize(new java.awt.Dimension(600, 400));
+        jPanelRS.setPreferredSize(new java.awt.Dimension(600, 470));
+        jPanelRS.setLayout(null);
 
         jPanelES.setBackground(new java.awt.Color(15, 27, 54));
 
-        jLabelEmployeeRegis.setFont(new java.awt.Font("Unispace", 0, 18)); // NOI18N
+        jLabelEmployeeRegis.setFont(new java.awt.Font("Impact", 0, 22)); // NOI18N
         jLabelEmployeeRegis.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEmployeeRegis.setText("EMPLOYEE REGISTRATION");
 
@@ -73,12 +79,13 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         );
         jPanelESLayout.setVerticalGroup(
             jPanelESLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelESLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabelEmployeeRegis))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelESLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jLabelEmployeeRegis)
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanelES);
+        jPanelRS.add(jPanelES);
         jPanelES.setBounds(0, 0, 380, 50);
 
         jTextFieldCPFES.setBackground(new java.awt.Color(51, 51, 51));
@@ -88,7 +95,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
                 jTextFieldCPFESActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldCPFES);
+        jPanelRS.add(jTextFieldCPFES);
         jTextFieldCPFES.setBounds(130, 230, 220, 30);
 
         jTextFieldNameES.setBackground(new java.awt.Color(51, 51, 51));
@@ -98,7 +105,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
                 jTextFieldNameESActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldNameES);
+        jPanelRS.add(jTextFieldNameES);
         jTextFieldNameES.setBounds(130, 80, 220, 30);
 
         jTextFieldUsernameES.setBackground(new java.awt.Color(51, 51, 51));
@@ -108,7 +115,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
                 jTextFieldUsernameESActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldUsernameES);
+        jPanelRS.add(jTextFieldUsernameES);
         jTextFieldUsernameES.setBounds(130, 130, 220, 30);
 
         jTextFieldPasswordES.setBackground(new java.awt.Color(51, 51, 51));
@@ -118,92 +125,92 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
                 jTextFieldPasswordESActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPasswordES);
+        jPanelRS.add(jTextFieldPasswordES);
         jTextFieldPasswordES.setBounds(130, 180, 220, 30);
 
         jComboBoxFunctionES.setBackground(new java.awt.Color(51, 51, 51));
         jComboBoxFunctionES.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         jComboBoxFunctionES.setForeground(new java.awt.Color(51, 51, 51));
         jComboBoxFunctionES.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxFunctionES.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jComboBoxFunctionES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBoxFunctionES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxFunctionESActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxFunctionES);
+        jPanelRS.add(jComboBoxFunctionES);
         jComboBoxFunctionES.setBounds(130, 280, 220, 30);
 
-        jButtonRETURN.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonRETURN.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
-        jButtonRETURN.setForeground(new java.awt.Color(204, 0, 0));
-        jButtonRETURN.setText("RETURN");
-        jButtonRETURN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonRETURN.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRETURNES.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonRETURNES.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
+        jButtonRETURNES.setForeground(new java.awt.Color(204, 0, 0));
+        jButtonRETURNES.setText("RETURN");
+        jButtonRETURNES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRETURNES.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonRETURNMouseClicked(evt);
+                jButtonRETURNESMouseClicked(evt);
             }
         });
-        jPanel1.add(jButtonRETURN);
-        jButtonRETURN.setBounds(260, 340, 90, 30);
+        jPanelRS.add(jButtonRETURNES);
+        jButtonRETURNES.setBounds(260, 340, 90, 30);
 
-        jButtonREGISTER.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonREGISTER.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
-        jButtonREGISTER.setForeground(new java.awt.Color(0, 102, 153));
-        jButtonREGISTER.setText("REGISTER");
-        jButtonREGISTER.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonREGISTER.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonREGISTERES.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonREGISTERES.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
+        jButtonREGISTERES.setForeground(new java.awt.Color(0, 102, 153));
+        jButtonREGISTERES.setText("REGISTER");
+        jButtonREGISTERES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonREGISTERES.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonREGISTERMouseClicked(evt);
+                jButtonREGISTERESMouseClicked(evt);
             }
         });
-        jPanel1.add(jButtonREGISTER);
-        jButtonREGISTER.setBounds(130, 342, 90, 30);
+        jPanelRS.add(jButtonREGISTERES);
+        jButtonREGISTERES.setBounds(130, 340, 100, 30);
 
         jLabelFunctionES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelFunctionES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelFunctionES.setText("FUNCTION:");
-        jPanel1.add(jLabelFunctionES);
+        jPanelRS.add(jLabelFunctionES);
         jLabelFunctionES.setBounds(40, 290, 90, 16);
 
         jLabelCPFES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelCPFES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCPFES.setText("CPF:");
-        jPanel1.add(jLabelCPFES);
+        jPanelRS.add(jLabelCPFES);
         jLabelCPFES.setBounds(90, 240, 40, 20);
 
         jLabelPasswordES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelPasswordES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPasswordES.setText("PASSWORD:");
-        jPanel1.add(jLabelPasswordES);
+        jPanelRS.add(jLabelPasswordES);
         jLabelPasswordES.setBounds(40, 190, 90, 20);
 
         jLabelUsernameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelUsernameES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsernameES.setText("USERNAME:");
-        jPanel1.add(jLabelUsernameES);
+        jPanelRS.add(jLabelUsernameES);
         jLabelUsernameES.setBounds(40, 140, 90, 20);
 
         jLabelNameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelNameES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNameES.setText("NAME:");
-        jPanel1.add(jLabelNameES);
+        jPanelRS.add(jLabelNameES);
         jLabelNameES.setBounds(80, 90, 50, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 50, 380, 370);
+        jLabelBackgroundES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jPanelRS.add(jLabelBackgroundES);
+        jLabelBackgroundES.setBounds(0, 50, 380, 370);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelRS, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelRS, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -230,13 +237,18 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxFunctionESActionPerformed
 
-    private void jButtonREGISTERMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonREGISTERMouseClicked
+    private void jButtonREGISTERESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonREGISTERESMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonREGISTERMouseClicked
+    }//GEN-LAST:event_jButtonREGISTERESMouseClicked
 
-    private void jButtonRETURNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRETURNMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonRETURNMouseClicked
+    private void jButtonRETURNESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRETURNESMouseClicked
+        Principal_Scren rgf = new Principal_Scren();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jButtonRETURNESMouseClicked
 
     /**
      * @param args the command line arguments
@@ -265,6 +277,12 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -275,19 +293,19 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonREGISTER;
-    private javax.swing.JButton jButtonRETURN;
+    private javax.swing.JButton jButtonREGISTERES;
+    private javax.swing.JButton jButtonRETURNES;
     private javax.swing.JComboBox<String> jComboBoxFunctionES;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelBackgroundES;
     private javax.swing.JLabel jLabelCPFES;
     private javax.swing.JLabel jLabelEmployeeRegis;
     private javax.swing.JLabel jLabelFunctionES;
     private javax.swing.JLabel jLabelNameES;
     private javax.swing.JLabel jLabelPasswordES;
     private javax.swing.JLabel jLabelUsernameES;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelES;
+    private javax.swing.JPanel jPanelRS;
     private javax.swing.JFormattedTextField jTextFieldCPFES;
     private javax.swing.JFormattedTextField jTextFieldNameES;
     private javax.swing.JFormattedTextField jTextFieldPasswordES;

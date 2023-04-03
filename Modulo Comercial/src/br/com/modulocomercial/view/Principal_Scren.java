@@ -1,4 +1,5 @@
 package br.com.modulocomercial.view;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -32,40 +33,40 @@ public class Principal_Scren extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jMenu1 = new javax.swing.JMenu();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelNLS = new javax.swing.JPanel();
         jPanelLS = new javax.swing.JPanel();
         jLabelMD = new javax.swing.JLabel();
-        txtlogin = new javax.swing.JFormattedTextField();
+        jtxtLoginLS = new javax.swing.JFormattedTextField();
         jPasswordFieldPassLS = new javax.swing.JPasswordField();
-        LOGINBUTTON = new javax.swing.JButton();
-        CANCELBUTTON = new javax.swing.JButton();
+        jLoginButtonLS = new javax.swing.JButton();
+        jCancelButtonLS = new javax.swing.JButton();
         jCheckBoxEmployee = new javax.swing.JCheckBox();
         jCheckBoxUser = new javax.swing.JCheckBox();
         jLabelUserLS = new javax.swing.JLabel();
         jLabelPasswordLS = new javax.swing.JLabel();
         jLabelNEWRegister = new javax.swing.JLabel();
-        jLabelLogo = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelLogoLS = new javax.swing.JLabel();
+        jLabelBackgroundLS = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tela Login");
+        setTitle("Login Screen");
         setMinimumSize(new java.awt.Dimension(600, 500));
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(33, 54, 76));
-        jPanel1.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel1.setMaximumSize(new java.awt.Dimension(0, 0));
-        jPanel1.setMinimumSize(new java.awt.Dimension(600, 400));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 470));
-        jPanel1.setLayout(null);
+        jPanelNLS.setBackground(new java.awt.Color(33, 54, 76));
+        jPanelNLS.setForeground(new java.awt.Color(204, 204, 204));
+        jPanelNLS.setMaximumSize(new java.awt.Dimension(0, 0));
+        jPanelNLS.setMinimumSize(new java.awt.Dimension(600, 400));
+        jPanelNLS.setPreferredSize(new java.awt.Dimension(600, 470));
+        jPanelNLS.setLayout(null);
 
         jPanelLS.setBackground(new java.awt.Color(15, 27, 54));
 
-        jLabelMD.setFont(new java.awt.Font("Unispace", 0, 18)); // NOI18N
+        jLabelMD.setFont(new java.awt.Font("Impact", 0, 22)); // NOI18N
         jLabelMD.setForeground(new java.awt.Color(255, 255, 255));
         jLabelMD.setText("MÓDULO COMERCIAL");
 
@@ -76,28 +77,28 @@ public class Principal_Scren extends javax.swing.JFrame {
             .addGroup(jPanelLSLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabelMD)
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         jPanelLSLayout.setVerticalGroup(
             jPanelLSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLSLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jLabelMD)
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanelLS);
+        jPanelNLS.add(jPanelLS);
         jPanelLS.setBounds(0, 10, 610, 50);
 
-        txtlogin.setBackground(new java.awt.Color(51, 51, 51));
-        txtlogin.setForeground(new java.awt.Color(255, 255, 255));
-        txtlogin.addActionListener(new java.awt.event.ActionListener() {
+        jtxtLoginLS.setBackground(new java.awt.Color(51, 51, 51));
+        jtxtLoginLS.setForeground(new java.awt.Color(255, 255, 255));
+        jtxtLoginLS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtloginActionPerformed(evt);
+                jtxtLoginLSActionPerformed(evt);
             }
         });
-        jPanel1.add(txtlogin);
-        txtlogin.setBounds(360, 160, 169, 32);
+        jPanelNLS.add(jtxtLoginLS);
+        jtxtLoginLS.setBounds(360, 170, 169, 32);
 
         jPasswordFieldPassLS.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordFieldPassLS.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,41 +107,41 @@ public class Principal_Scren extends javax.swing.JFrame {
                 jPasswordFieldPassLSActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordFieldPassLS);
-        jPasswordFieldPassLS.setBounds(360, 240, 170, 30);
+        jPanelNLS.add(jPasswordFieldPassLS);
+        jPasswordFieldPassLS.setBounds(360, 250, 170, 30);
 
-        LOGINBUTTON.setBackground(new java.awt.Color(51, 51, 51));
-        LOGINBUTTON.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
-        LOGINBUTTON.setForeground(new java.awt.Color(102, 204, 0));
-        LOGINBUTTON.setText("Login");
-        LOGINBUTTON.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        LOGINBUTTON.addActionListener(new java.awt.event.ActionListener() {
+        jLoginButtonLS.setBackground(new java.awt.Color(255, 255, 255));
+        jLoginButtonLS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
+        jLoginButtonLS.setForeground(new java.awt.Color(0, 102, 153));
+        jLoginButtonLS.setText("LOGIN");
+        jLoginButtonLS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLoginButtonLS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LOGINBUTTONActionPerformed(evt);
+                jLoginButtonLSActionPerformed(evt);
             }
         });
-        jPanel1.add(LOGINBUTTON);
-        LOGINBUTTON.setBounds(360, 300, 80, 32);
+        jPanelNLS.add(jLoginButtonLS);
+        jLoginButtonLS.setBounds(360, 310, 80, 32);
 
-        CANCELBUTTON.setBackground(new java.awt.Color(51, 51, 51));
-        CANCELBUTTON.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
-        CANCELBUTTON.setForeground(new java.awt.Color(204, 0, 0));
-        CANCELBUTTON.setText("Cancel");
-        CANCELBUTTON.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        CANCELBUTTON.addActionListener(new java.awt.event.ActionListener() {
+        jCancelButtonLS.setBackground(new java.awt.Color(255, 255, 255));
+        jCancelButtonLS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
+        jCancelButtonLS.setForeground(new java.awt.Color(204, 0, 0));
+        jCancelButtonLS.setText("CANCEL");
+        jCancelButtonLS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCancelButtonLS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CANCELBUTTONActionPerformed(evt);
+                jCancelButtonLSActionPerformed(evt);
             }
         });
-        jPanel1.add(CANCELBUTTON);
-        CANCELBUTTON.setBounds(450, 300, 80, 32);
+        jPanelNLS.add(jCancelButtonLS);
+        jCancelButtonLS.setBounds(450, 310, 80, 32);
 
-        jCheckBoxEmployee.setFont(new java.awt.Font("Unispace", 0, 14)); // NOI18N
+        jCheckBoxEmployee.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jCheckBoxEmployee.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBoxEmployee.setText("Funcionário");
         jCheckBoxEmployee.setBorder(null);
         jCheckBoxEmployee.setContentAreaFilled(false);
-        jCheckBoxEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCheckBoxEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBoxEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCheckBoxEmployeeMouseClicked(evt);
@@ -151,14 +152,14 @@ public class Principal_Scren extends javax.swing.JFrame {
                 jCheckBoxEmployeeActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBoxEmployee);
+        jPanelNLS.add(jCheckBoxEmployee);
         jCheckBoxEmployee.setBounds(330, 430, 120, 20);
 
-        jCheckBoxUser.setFont(new java.awt.Font("Unispace", 0, 14)); // NOI18N
+        jCheckBoxUser.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jCheckBoxUser.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBoxUser.setText("Usuário");
         jCheckBoxUser.setContentAreaFilled(false);
-        jCheckBoxUser.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jCheckBoxUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jCheckBoxUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCheckBoxUserMouseClicked(evt);
@@ -169,23 +170,23 @@ public class Principal_Scren extends javax.swing.JFrame {
                 jCheckBoxUserActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBoxUser);
+        jPanelNLS.add(jCheckBoxUser);
         jCheckBoxUser.setBounds(470, 430, 100, 20);
 
-        jLabelUserLS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
+        jLabelUserLS.setFont(new java.awt.Font("Impact", 0, 22)); // NOI18N
         jLabelUserLS.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelUserLS.setText("User:");
-        jPanel1.add(jLabelUserLS);
-        jLabelUserLS.setBounds(360, 120, 170, 32);
+        jLabelUserLS.setText("USER:");
+        jPanelNLS.add(jLabelUserLS);
+        jLabelUserLS.setBounds(360, 130, 170, 32);
 
-        jLabelPasswordLS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
+        jLabelPasswordLS.setFont(new java.awt.Font("Impact", 0, 22)); // NOI18N
         jLabelPasswordLS.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelPasswordLS.setText("Password:");
-        jPanel1.add(jLabelPasswordLS);
-        jLabelPasswordLS.setBounds(360, 200, 170, 32);
+        jLabelPasswordLS.setText("PASSWORD:");
+        jPanelNLS.add(jLabelPasswordLS);
+        jLabelPasswordLS.setBounds(360, 210, 170, 32);
 
         jLabelNEWRegister.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNEWRegister.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
+        jLabelNEWRegister.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jLabelNEWRegister.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNEWRegister.setText("Click here for create a new account:");
         jLabelNEWRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -194,30 +195,32 @@ public class Principal_Scren extends javax.swing.JFrame {
                 jLabelNEWRegisterMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabelNEWRegister);
-        jLabelNEWRegister.setBounds(320, 400, 260, 15);
+        jPanelNLS.add(jLabelNEWRegister);
+        jLabelNEWRegister.setBounds(330, 400, 240, 21);
 
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/SP_TECH-removebg-preview.png"))); // NOI18N
-        jPanel1.add(jLabelLogo);
-        jLabelLogo.setBounds(-70, 100, 410, 300);
+        jLabelLogoLS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLogoLS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/SP_TECH-removebg-preview.png"))); // NOI18N
+        jLabelLogoLS.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanelNLS.add(jLabelLogoLS);
+        jLabelLogoLS.setBounds(-20, 90, 410, 330);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(0, 60, 600, 420);
+        jLabelBackgroundLS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jPanelNLS.add(jLabelBackgroundLS);
+        jLabelBackgroundLS.setBounds(7, 60, 590, 420);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(-10, -10, 600, 480);
+        getContentPane().add(jPanelNLS);
+        jPanelNLS.setBounds(-10, -10, 600, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginActionPerformed
+    private void jtxtLoginLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtLoginLSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtloginActionPerformed
+    }//GEN-LAST:event_jtxtLoginLSActionPerformed
 
-    private void CANCELBUTTONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELBUTTONActionPerformed
+    private void jCancelButtonLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelButtonLSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CANCELBUTTONActionPerformed
+    }//GEN-LAST:event_jCancelButtonLSActionPerformed
 
     private void jLabelNEWRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNEWRegisterMouseClicked
 
@@ -228,9 +231,9 @@ public class Principal_Scren extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordFieldPassLSActionPerformed
 
-    private void LOGINBUTTONActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LOGINBUTTONActionPerformed
+    private void jLoginButtonLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonLSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LOGINBUTTONActionPerformed
+    }//GEN-LAST:event_jLoginButtonLSActionPerformed
 
     private void jCheckBoxEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEmployeeActionPerformed
         // TODO add your handling code here:
@@ -285,6 +288,12 @@ public class Principal_Scren extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -295,21 +304,21 @@ public class Principal_Scren extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CANCELBUTTON;
-    private javax.swing.JButton LOGINBUTTON;
+    private javax.swing.JButton jCancelButtonLS;
     private javax.swing.JCheckBox jCheckBoxEmployee;
     private javax.swing.JCheckBox jCheckBoxUser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelBackgroundLS;
+    private javax.swing.JLabel jLabelLogoLS;
     private javax.swing.JLabel jLabelMD;
     private javax.swing.JLabel jLabelNEWRegister;
     private javax.swing.JLabel jLabelPasswordLS;
     private javax.swing.JLabel jLabelUserLS;
+    private javax.swing.JButton jLoginButtonLS;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelLS;
+    private javax.swing.JPanel jPanelNLS;
     private javax.swing.JPasswordField jPasswordFieldPassLS;
-    private javax.swing.JFormattedTextField txtlogin;
+    private javax.swing.JFormattedTextField jtxtLoginLS;
     // End of variables declaration//GEN-END:variables
 }

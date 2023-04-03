@@ -1,4 +1,7 @@
 package br.com.modulocomercial.view;
+
+import javax.swing.JFrame;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,6 +18,7 @@ public class Register_ScreenUser extends javax.swing.JFrame {
      */
     public Register_ScreenUser() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -41,20 +45,21 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         jBackgroundUS = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(0, 0));
-        setPreferredSize(new java.awt.Dimension(390, 390));
+        setTitle("Register Screen");
+        setMinimumSize(new java.awt.Dimension(390, 390));
         setResizable(false);
         getContentPane().setLayout(null);
 
         jLabelPanelUS.setBackground(new java.awt.Color(15, 27, 54));
         jLabelPanelUS.setMinimumSize(new java.awt.Dimension(380, 600));
+        jLabelPanelUS.setPreferredSize(new java.awt.Dimension(380, 600));
         jLabelPanelUS.setLayout(null);
 
-        jLabelUserRegistration.setFont(new java.awt.Font("Unispace", 0, 18)); // NOI18N
+        jLabelUserRegistration.setFont(new java.awt.Font("Impact", 0, 22)); // NOI18N
         jLabelUserRegistration.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUserRegistration.setText("USER REGISTRATION");
         jLabelPanelUS.add(jLabelUserRegistration);
-        jLabelUserRegistration.setBounds(6, 21, 187, 23);
+        jLabelUserRegistration.setBounds(10, 20, 187, 23);
 
         getContentPane().add(jLabelPanelUS);
         jLabelPanelUS.setBounds(0, 0, 380, 50);
@@ -100,9 +105,10 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         jTextFieldPasswordUS.setBounds(130, 180, 220, 30);
 
         jButtonRETURNUS.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonRETURNUS.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
+        jButtonRETURNUS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonRETURNUS.setForeground(new java.awt.Color(204, 0, 0));
         jButtonRETURNUS.setText("RETURN");
+        jButtonRETURNUS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRETURNUS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonRETURNUSMouseClicked(evt);
@@ -112,16 +118,17 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         jButtonRETURNUS.setBounds(260, 290, 90, 30);
 
         jButtonREGISTERUS.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonREGISTERUS.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
+        jButtonREGISTERUS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonREGISTERUS.setForeground(new java.awt.Color(0, 102, 153));
         jButtonREGISTERUS.setText("REGISTER");
+        jButtonREGISTERUS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonREGISTERUS.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonREGISTERUSMouseClicked(evt);
             }
         });
         getContentPane().add(jButtonREGISTERUS);
-        jButtonREGISTERUS.setBounds(130, 290, 90, 30);
+        jButtonREGISTERUS.setBounds(130, 290, 100, 30);
 
         jLabelEmailUS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelEmailUS.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,7 +154,7 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         getContentPane().add(jLabelNameUS);
         jLabelNameUS.setBounds(80, 90, 50, 20);
 
-        jBackgroundUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jBackgroundUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         getContentPane().add(jBackgroundUS);
         jBackgroundUS.setBounds(0, 50, 380, 310);
 
@@ -171,7 +178,12 @@ public class Register_ScreenUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPasswordUSActionPerformed
 
     private void jButtonRETURNUSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRETURNUSMouseClicked
-        // TODO add your handling code here:
+        Principal_Scren rgf = new Principal_Scren();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
     }//GEN-LAST:event_jButtonRETURNUSMouseClicked
 
     private void jButtonREGISTERUSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonREGISTERUSMouseClicked
@@ -203,6 +215,9 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Register_ScreenUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
