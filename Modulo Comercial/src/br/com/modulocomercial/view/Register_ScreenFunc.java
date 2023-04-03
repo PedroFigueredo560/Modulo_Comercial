@@ -125,7 +125,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jComboBoxFunctionES.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         jComboBoxFunctionES.setForeground(new java.awt.Color(51, 51, 51));
         jComboBoxFunctionES.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxFunctionES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxFunctionES.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxFunctionES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxFunctionESActionPerformed(evt);
@@ -138,7 +138,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jButtonRETURN.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         jButtonRETURN.setForeground(new java.awt.Color(204, 0, 0));
         jButtonRETURN.setText("RETURN");
-        jButtonRETURN.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRETURN.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonRETURN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonRETURNMouseClicked(evt);
@@ -151,7 +151,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jButtonREGISTER.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
         jButtonREGISTER.setForeground(new java.awt.Color(0, 102, 153));
         jButtonREGISTER.setText("REGISTER");
-        jButtonREGISTER.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonREGISTER.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonREGISTER.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonREGISTERMouseClicked(evt);
@@ -190,7 +190,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jPanel1.add(jLabelNameES);
         jLabelNameES.setBounds(80, 90, 50, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 50, 380, 370);
 

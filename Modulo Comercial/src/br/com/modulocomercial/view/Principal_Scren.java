@@ -195,11 +195,11 @@ public class Principal_Scren extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabelNEWRegister);
-        jLabelNEWRegister.setBounds(320, 400, 260, 16);
+        jLabelNEWRegister.setBounds(320, 400, 260, 15);
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/SP_TECH-removebg-preview.png"))); // NOI18N
         jPanel1.add(jLabelLogo);
-        jLabelLogo.setBounds(-60, 90, 410, 280);
+        jLabelLogo.setBounds(-70, 100, 410, 300);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanel1.add(jLabel4);
