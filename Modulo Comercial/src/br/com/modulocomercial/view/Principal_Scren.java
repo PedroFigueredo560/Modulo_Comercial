@@ -10,7 +10,10 @@ package br.com.modulocomercial.view;
  * @author joanb
  */
 
+import br.com.modulocomercial.funcionario.model.Funcionario;
+import static java.lang.System.exit;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Principal_Scren extends javax.swing.JFrame {
 
@@ -220,6 +223,15 @@ public class Principal_Scren extends javax.swing.JFrame {
 
     private void jCancelButtonLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelButtonLSActionPerformed
         // TODO add your handling code here:
+        // limpa os campos login 
+        this.jtxtLoginLS.setText("");
+        this.jPasswordFieldPassLS.setText("");
+        
+        //ou então(nao decidimos isso ainda)
+        
+        //fechar a aplicaçao
+        //exit(0);
+        
     }//GEN-LAST:event_jCancelButtonLSActionPerformed
 
     private void jLabelNEWRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNEWRegisterMouseClicked
@@ -233,14 +245,33 @@ public class Principal_Scren extends javax.swing.JFrame {
 
     private void jLoginButtonLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonLSActionPerformed
         // TODO add your handling code here:
+        //verifica se login e/ou senha sao nulos;
+        String senha = new String(jPasswordFieldPassLS.getPassword());
+        String login = this.jtxtLoginLS.getText(); 
+        if("".equals(login) || "".equals(senha)){
+            this.jtxtLoginLS.setText("");
+            this.jPasswordFieldPassLS.setText("");
+            JOptionPane.showMessageDialog(null,"usuario ou senha invalidos");
+        } else{
+            // verificar se a senha e login correspondem a senha e login presentes no banco de dados
+            if("001fun".equals(login) && "1234".equals(senha) ){
+               
+                //temporario, por que nao tem a proxima tela
+                JOptionPane.showMessageDialog(null,"voce entrou");
+            }
+        }
     }//GEN-LAST:event_jLoginButtonLSActionPerformed
 
     private void jCheckBoxEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEmployeeActionPerformed
         // TODO add your handling code here:
+             new Register_ScreenFunc().setVisible(true);
     }//GEN-LAST:event_jCheckBoxEmployeeActionPerformed
 
     private void jCheckBoxUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxUserActionPerformed
-        // TODO add your handling code here:
+       
+        // abre a tela de registro do cliente
+                new Register_ScreenUser().setVisible(true);
+            
     }//GEN-LAST:event_jCheckBoxUserActionPerformed
 
     private void jCheckBoxEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxEmployeeMouseClicked
