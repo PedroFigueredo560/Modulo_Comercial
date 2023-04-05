@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.modelocomercial.cliente.service;
+package br.com.modulocomercial.cliente.service;
 
 import br.com.modulocomercial.cliente.model.Cliente;
 import br.com.modulocomercial.exception.BusinessException;        
@@ -86,7 +86,7 @@ public class ServiceCliente implements IServiceCliente {
 
     @Override
     public List<Cliente> getAllClientes() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    return this.daoCliente.findAll();  
     }
 }
 
