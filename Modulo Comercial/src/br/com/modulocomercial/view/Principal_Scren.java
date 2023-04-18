@@ -195,7 +195,6 @@ public class Principal_Scren extends javax.swing.JFrame {
         jPanelNLS.add(jPasswordFieldPassLS);
         jPasswordFieldPassLS.setBounds(360, 250, 170, 30);
 
-        jLoginButtonLS.setBackground(new java.awt.Color(255, 255, 255));
         jLoginButtonLS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jLoginButtonLS.setForeground(new java.awt.Color(0, 102, 153));
         jLoginButtonLS.setText("LOGIN");
@@ -208,7 +207,6 @@ public class Principal_Scren extends javax.swing.JFrame {
         jPanelNLS.add(jLoginButtonLS);
         jLoginButtonLS.setBounds(360, 310, 80, 32);
 
-        jCancelButtonLS.setBackground(new java.awt.Color(255, 255, 255));
         jCancelButtonLS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jCancelButtonLS.setForeground(new java.awt.Color(204, 0, 0));
         jCancelButtonLS.setText("CANCEL");
@@ -331,8 +329,12 @@ public class Principal_Scren extends javax.swing.JFrame {
         //verifica se e usuario ou cliente por meio do codigo de login
        if(login.contains("CLI")){
            this.makeLoginUser();
-       }    else{
+       }    
+       else if(login.contains("FUC")){
             this.makeLoginEmployee();
+       }
+       else {
+           JOptionPane.showMessageDialog(null,"Nome de usario invalido");
        }
     }//GEN-LAST:event_jLoginButtonLSActionPerformed
 
@@ -344,7 +346,7 @@ public class Principal_Scren extends javax.swing.JFrame {
     private void jCheckBoxUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxUserActionPerformed
        
         // abre a tela de registro do cliente
-                new Register_ScreenUser().setVisible(true);
+               // new Register_ScreenUser().setVisible(true);
             
     }//GEN-LAST:event_jCheckBoxUserActionPerformed
 

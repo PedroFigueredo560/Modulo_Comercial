@@ -19,18 +19,18 @@ public class FacadeCliente implements IFacadeCliente{
 
 
     @Override
-    public Cliente saveCliente(Cliente funcionario) {
-        return serviceCliente.saveCliente(funcionario);
+    public Cliente saveCliente(Cliente cliente) {
+        return serviceCliente.saveCliente(cliente);
     }
 
     @Override
-    public Cliente updateCliente(Cliente funcionario) {
-        return serviceCliente.updateCliente(funcionario);
+    public Cliente updateCliente(Cliente cliente) {
+        return serviceCliente.updateCliente(cliente);
     }
 
     @Override
-    public void deleteCliente(Cliente funcionario) {
-        this.serviceCliente.deleteCliente(funcionario);
+    public void deleteCliente(Cliente cliente) {
+        this.serviceCliente.deleteCliente(cliente);
     }
 
     @Override

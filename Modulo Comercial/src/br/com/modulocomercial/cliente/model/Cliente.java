@@ -20,22 +20,23 @@ public class Cliente extends PersistenceEntity{
     
     //Variáveis
     
-    private String cpf;
+    
     private String nome;
     private String usuario;
     private String senha;
-    private String cargo;
+    private String email;
     
     
      //Geterres e Setterres
-    
-    public String getCpf() {
-        return cpf;
-    }
- public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
  
+    
+    public String getEmail() {
+        return email;
+    }
+     public void setEmail(String login) {
+        this.email = login;
+    }
+     
     public String getNome() {
         return nome;
     }
@@ -60,13 +61,6 @@ public class Cliente extends PersistenceEntity{
         this.senha = senha;
     }
     
-    
-    public String getCargo() {
-        return cargo;    
-    }
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
            
     //Id
     

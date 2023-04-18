@@ -18,10 +18,10 @@ public class ClienteDao {
     public class FuncionarioDao extends BaseDAO<Cliente> implements IClienteDao {
      
     @Override
-    public List<Cliente> findById(String name) {
-      String busca = "SELECT a FROM Usuario AS a WHERE a.nome=:nome";
+    public List<Cliente> findById(String id) {
+      String busca = "SELECT a FROM Cliente AS a WHERE a.id=:id";
         Query query = entityManager.createQuery(busca);
-        query.setParameter("nome", name);
+        query.setParameter("id", id);
         return query.getResultList();
         
         }
