@@ -10,6 +10,9 @@ package br.com.modulocomercial.view;
  * @author joanb
  */
 
+import br.com.modulocomercial.funcionario.view.Register_ScreenFunc;
+import br.com.modulocomercial.cliente.view.Register_ScreenUser;
+import br.com.modulocomercial.cliente.view.Profile_Screen;
 import br.com.modulocomercial.cliente.facade.FacadeInstanceCliente;
 //import br.com.modulocomercial.funcionario.facade.FacadeFuncionario;
 import br.com.modulocomercial.funcionario.facade.FacadeInstanceFuncionario;

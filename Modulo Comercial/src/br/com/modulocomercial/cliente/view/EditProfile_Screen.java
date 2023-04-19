@@ -1,4 +1,6 @@
-package br.com.modulocomercial.view;
+package br.com.modulocomercial.cliente.view;
+
+
 
 import javax.swing.JFrame;
 

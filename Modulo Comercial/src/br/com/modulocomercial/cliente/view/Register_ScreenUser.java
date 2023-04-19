@@ -1,7 +1,8 @@
-package br.com.modulocomercial.view;
+package br.com.modulocomercial.cliente.view;
 
 import br.com.modulocomercial.cliente.facade.FacadeInstanceCliente;
 import br.com.modulocomercial.cliente.model.Cliente;
+import br.com.modulocomercial.view.Principal_Scren;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JFrame;
@@ -159,20 +160,20 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         jLabelEmailUS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEmailUS.setText("EMAIL:");
         getContentPane().add(jLabelEmailUS);
-        jLabelEmailUS.setBounds(70, 180, 51, 21);
+        jLabelEmailUS.setBounds(70, 180, 60, 20);
 
         jLabelPasswordUS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelPasswordUS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPasswordUS.setText("PASSWORD:");
         jLabelPasswordUS.setFocusable(false);
         getContentPane().add(jLabelPasswordUS);
-        jLabelPasswordUS.setBounds(20, 140, 98, 20);
+        jLabelPasswordUS.setBounds(20, 140, 90, 20);
 
         jLabelNameUS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelNameUS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNameUS.setText("NAME:");
         getContentPane().add(jLabelNameUS);
-        jLabelNameUS.setBounds(70, 90, 50, 21);
+        jLabelNameUS.setBounds(70, 90, 50, 20);
 
         passSenha.setBackground(new java.awt.Color(51, 51, 51));
         passSenha.addActionListener(new java.awt.event.ActionListener() {

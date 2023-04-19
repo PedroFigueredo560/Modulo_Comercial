@@ -1,4 +1,4 @@
-package br.com.modulocomercial.view;
+package br.com.modulocomercial.cliente.view;
 
 import javax.swing.JFrame;
 
@@ -196,6 +196,7 @@ public class Profile_Screen extends javax.swing.JFrame {
         jLabelUserPS.setBounds(50, 350, 60, 32);
 
         jLabelBackgroundPS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jLabelBackgroundPS.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabelBackgroundPS.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabelBackgroundPS);
         jLabelBackgroundPS.setBounds(-10, 40, 800, 470);

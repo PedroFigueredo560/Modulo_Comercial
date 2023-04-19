@@ -1,5 +1,6 @@
-package br.com.modulocomercial.view;
+package br.com.modulocomercial.funcionario.view;
 
+import br.com.modulocomercial.view.Principal_Scren;
 import javax.swing.JFrame;
 
 /*
@@ -175,25 +176,25 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jLabelCPFES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCPFES.setText("CPF:");
         jPanelRS.add(jLabelCPFES);
-        jLabelCPFES.setBounds(90, 240, 40, 21);
+        jLabelCPFES.setBounds(90, 240, 40, 20);
 
         jLabelPasswordES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelPasswordES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPasswordES.setText("PASSWORD:");
         jPanelRS.add(jLabelPasswordES);
-        jLabelPasswordES.setBounds(40, 190, 90, 21);
+        jLabelPasswordES.setBounds(40, 190, 90, 20);
 
         jLabelUsernameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelUsernameES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsernameES.setText("USERNAME:");
         jPanelRS.add(jLabelUsernameES);
-        jLabelUsernameES.setBounds(40, 140, 90, 21);
+        jLabelUsernameES.setBounds(40, 140, 90, 20);
 
         jLabelNameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelNameES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNameES.setText("NAME:");
         jPanelRS.add(jLabelNameES);
-        jLabelNameES.setBounds(80, 90, 50, 21);
+        jLabelNameES.setBounds(80, 90, 50, 20);
 
         jLabelBackgroundES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanelRS.add(jLabelBackgroundES);
