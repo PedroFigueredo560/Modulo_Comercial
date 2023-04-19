@@ -340,13 +340,13 @@ public class Principal_Scren extends javax.swing.JFrame {
 
     private void jCheckBoxEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEmployeeActionPerformed
         // TODO add your handling code here:
-             new Register_ScreenFunc().setVisible(true);
+        //new Register_ScreenFunc().setVisible(true);
     }//GEN-LAST:event_jCheckBoxEmployeeActionPerformed
 
     private void jCheckBoxUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxUserActionPerformed
        
         // abre a tela de registro do cliente
-               // new Register_ScreenUser().setVisible(true);
+        // new Register_ScreenUser().setVisible(true);
             
     }//GEN-LAST:event_jCheckBoxUserActionPerformed
 
