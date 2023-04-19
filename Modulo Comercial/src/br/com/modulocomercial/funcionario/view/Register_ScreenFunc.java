@@ -1,7 +1,12 @@
 package br.com.modulocomercial.funcionario.view;
 
+import br.com.modulocomercial.funcionario.facade.FacadeInstanceFuncionario;
+import br.com.modulocomercial.funcionario.model.Funcionario;
 import br.com.modulocomercial.view.Principal_Scren;
+import java.util.List;
+import java.util.Random;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,7 +20,16 @@ import javax.swing.JFrame;
 
 
 public class Register_ScreenFunc extends javax.swing.JFrame {
+//String usuario 
+    String usuario;
 
+//cria numeros aleatorios
+    List<Funcionario> funcionarios = FacadeInstanceFuncionario.getInstance().getAllFuncionario();
+        Random num1 = new Random();
+        Random num2 = new Random();
+        
+//construtor de cliente
+    Funcionario user = new Funcionario();
     /**
      * Creates new form Register_Screen
      */
@@ -23,7 +37,44 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    //a funçao vai definir um login aleatorio para usuario com o padrao de xxxClixxx
+    //logo em seguida vai verificar se esse login ja existe no banco de dados
+    //se existir ela se chama novamente para gerar outro numero e fazer a checagem novamente
+    //se der tudo certo ele retorna o usario 
+    private String validaUsuario(){
+    usuario=(100+num1.nextInt(900))+"CLI"+(100+num2.nextInt(900));
+    for(int i = 0; i < funcionarios.size(); i++){
+        if(usuario.equals(funcionarios.get(i).getUsuario())){
+            validaUsuario();
+        }    
+    }
+    return usuario;
+    }
+    
+     //validaçoes()
+    private boolean validaCampos(){
+        if(user.getNome().equals("")){
+            JOptionPane.showMessageDialog(null,"O campo name não pode estar em branco");
+            return false;
+        }
+        if(user.getCpf().equals("")){
+            JOptionPane.showMessageDialog(null,"O campo cpf não pode estar em branco");
+            return false;
+        }
+        if(user.getSenha().equals("")){
+            JOptionPane.showMessageDialog(null,"O campo password não pode estar em branco");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private String valida_cargo(){
+        //pega a saida do combo_box e transforma em uma string
+        String ocupacao = (String)this.cbxFuncao.getSelectedItem();
+        
+        return ocupacao;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,18 +88,16 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jPanelRS = new javax.swing.JPanel();
         jPanelES = new javax.swing.JPanel();
         jLabelEmployeeRegis = new javax.swing.JLabel();
-        jTextFieldCPFES = new javax.swing.JFormattedTextField();
-        jTextFieldNameES = new javax.swing.JFormattedTextField();
-        jTextFieldUsernameES = new javax.swing.JFormattedTextField();
-        jTextFieldPasswordES = new javax.swing.JFormattedTextField();
-        jComboBoxFunctionES = new javax.swing.JComboBox<>();
+        txtCpf = new javax.swing.JFormattedTextField();
+        txtName = new javax.swing.JFormattedTextField();
+        cbxFuncao = new javax.swing.JComboBox<>();
         jButtonRETURNES = new javax.swing.JButton();
         jButtonREGISTERES = new javax.swing.JButton();
         jLabelFunctionES = new javax.swing.JLabel();
         jLabelCPFES = new javax.swing.JLabel();
         jLabelPasswordES = new javax.swing.JLabel();
-        jLabelUsernameES = new javax.swing.JLabel();
         jLabelNameES = new javax.swing.JLabel();
+        passSenha = new javax.swing.JPasswordField();
         jLabelBackgroundES = new javax.swing.JLabel();
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
@@ -89,58 +138,38 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jPanelRS.add(jPanelES);
         jPanelES.setBounds(0, 0, 380, 50);
 
-        jTextFieldCPFES.setBackground(new java.awt.Color(51, 51, 51));
-        jTextFieldCPFES.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldCPFES.addActionListener(new java.awt.event.ActionListener() {
+        txtCpf.setBackground(new java.awt.Color(51, 51, 51));
+        txtCpf.setForeground(new java.awt.Color(255, 255, 255));
+        txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCPFESActionPerformed(evt);
+                txtCpfActionPerformed(evt);
             }
         });
-        jPanelRS.add(jTextFieldCPFES);
-        jTextFieldCPFES.setBounds(130, 230, 220, 30);
+        jPanelRS.add(txtCpf);
+        txtCpf.setBounds(130, 150, 220, 30);
 
-        jTextFieldNameES.setBackground(new java.awt.Color(51, 51, 51));
-        jTextFieldNameES.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldNameES.addActionListener(new java.awt.event.ActionListener() {
+        txtName.setBackground(new java.awt.Color(51, 51, 51));
+        txtName.setForeground(new java.awt.Color(255, 255, 255));
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNameESActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
-        jPanelRS.add(jTextFieldNameES);
-        jTextFieldNameES.setBounds(130, 80, 220, 30);
+        jPanelRS.add(txtName);
+        txtName.setBounds(130, 80, 220, 30);
 
-        jTextFieldUsernameES.setBackground(new java.awt.Color(51, 51, 51));
-        jTextFieldUsernameES.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldUsernameES.addActionListener(new java.awt.event.ActionListener() {
+        cbxFuncao.setBackground(new java.awt.Color(51, 51, 51));
+        cbxFuncao.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
+        cbxFuncao.setForeground(new java.awt.Color(51, 51, 51));
+        cbxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "RH", "Almoxarifado", "Caixa", "Faxineiro", "Repositor" }));
+        cbxFuncao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbxFuncao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUsernameESActionPerformed(evt);
+                cbxFuncaoActionPerformed(evt);
             }
         });
-        jPanelRS.add(jTextFieldUsernameES);
-        jTextFieldUsernameES.setBounds(130, 130, 220, 30);
-
-        jTextFieldPasswordES.setBackground(new java.awt.Color(51, 51, 51));
-        jTextFieldPasswordES.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldPasswordES.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPasswordESActionPerformed(evt);
-            }
-        });
-        jPanelRS.add(jTextFieldPasswordES);
-        jTextFieldPasswordES.setBounds(130, 180, 220, 30);
-
-        jComboBoxFunctionES.setBackground(new java.awt.Color(51, 51, 51));
-        jComboBoxFunctionES.setFont(new java.awt.Font("Unispace", 0, 12)); // NOI18N
-        jComboBoxFunctionES.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBoxFunctionES.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxFunctionES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jComboBoxFunctionES.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxFunctionESActionPerformed(evt);
-            }
-        });
-        jPanelRS.add(jComboBoxFunctionES);
-        jComboBoxFunctionES.setBounds(130, 280, 220, 30);
+        jPanelRS.add(cbxFuncao);
+        cbxFuncao.setBounds(130, 190, 220, 30);
 
         jButtonRETURNES.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonRETURNES.setForeground(new java.awt.Color(204, 0, 0));
@@ -152,7 +181,7 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
             }
         });
         jPanelRS.add(jButtonRETURNES);
-        jButtonRETURNES.setBounds(260, 340, 90, 30);
+        jButtonRETURNES.setBounds(260, 230, 90, 30);
 
         jButtonREGISTERES.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonREGISTERES.setForeground(new java.awt.Color(0, 102, 153));
@@ -164,41 +193,40 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
             }
         });
         jPanelRS.add(jButtonREGISTERES);
-        jButtonREGISTERES.setBounds(130, 340, 100, 30);
+        jButtonREGISTERES.setBounds(130, 230, 100, 30);
 
         jLabelFunctionES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelFunctionES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelFunctionES.setText("FUNCTION:");
         jPanelRS.add(jLabelFunctionES);
-        jLabelFunctionES.setBounds(40, 290, 90, 16);
+        jLabelFunctionES.setBounds(40, 200, 83, 16);
 
         jLabelCPFES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelCPFES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCPFES.setText("CPF:");
         jPanelRS.add(jLabelCPFES);
-        jLabelCPFES.setBounds(90, 240, 40, 20);
+        jLabelCPFES.setBounds(90, 150, 40, 21);
 
         jLabelPasswordES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelPasswordES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPasswordES.setText("PASSWORD:");
         jPanelRS.add(jLabelPasswordES);
-        jLabelPasswordES.setBounds(40, 190, 90, 20);
-
-        jLabelUsernameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
-        jLabelUsernameES.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelUsernameES.setText("USERNAME:");
-        jPanelRS.add(jLabelUsernameES);
-        jLabelUsernameES.setBounds(40, 140, 90, 20);
+        jLabelPasswordES.setBounds(30, 120, 98, 21);
 
         jLabelNameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelNameES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNameES.setText("NAME:");
         jPanelRS.add(jLabelNameES);
-        jLabelNameES.setBounds(80, 90, 50, 20);
+        jLabelNameES.setBounds(80, 90, 50, 21);
+
+        passSenha.setBackground(new java.awt.Color(51, 51, 51));
+        passSenha.setText("jPasswordField1");
+        jPanelRS.add(passSenha);
+        passSenha.setBounds(130, 120, 220, 22);
 
         jLabelBackgroundES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanelRS.add(jLabelBackgroundES);
-        jLabelBackgroundES.setBounds(0, 50, 380, 370);
+        jLabelBackgroundES.setBounds(0, 50, 380, 230);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,36 +236,44 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelRS, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanelRS, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldCPFESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFESActionPerformed
+    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCPFESActionPerformed
+    }//GEN-LAST:event_txtCpfActionPerformed
 
-    private void jTextFieldNameESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameESActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNameESActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
-    private void jTextFieldUsernameESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsernameESActionPerformed
+    private void cbxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxFuncaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUsernameESActionPerformed
-
-    private void jTextFieldPasswordESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPasswordESActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPasswordESActionPerformed
-
-    private void jComboBoxFunctionESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFunctionESActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxFunctionESActionPerformed
+    }//GEN-LAST:event_cbxFuncaoActionPerformed
 
     private void jButtonREGISTERESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonREGISTERESMouseClicked
         // TODO add your handling code here:
+        //define uma variavel senha e passa para ela o resultado de get password transformado de Char para String
+        String senha = new String(passSenha.getPassword());
+        //verfica se os campos estao todos preenchidos
+        if(validaCampos() == true){
+            user.setNome(txtName.getText());
+            user.setSenha(senha);
+            user.setCpf(txtCpf.getText());
+            user.setUsuario(validaUsuario());
+            user.setCargo(valida_cargo());
+        //mostra o login do cliente
+            JOptionPane.showMessageDialog(null,"O login do cliente é:" + usuario);           
+        //salva o usuario
+            FacadeInstanceFuncionario.getInstance().saveFuncionario(user);
+        //limpa os campos
+            this.txtName.setText("");
+            this.txtCpf.setText("");
+            this.passSenha.setText("");
+        }
     }//GEN-LAST:event_jButtonREGISTERESMouseClicked
 
     private void jButtonRETURNESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRETURNESMouseClicked
@@ -292,9 +328,9 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbxFuncao;
     private javax.swing.JButton jButtonREGISTERES;
     private javax.swing.JButton jButtonRETURNES;
-    private javax.swing.JComboBox<String> jComboBoxFunctionES;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelBackgroundES;
     private javax.swing.JLabel jLabelCPFES;
@@ -302,12 +338,10 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFunctionES;
     private javax.swing.JLabel jLabelNameES;
     private javax.swing.JLabel jLabelPasswordES;
-    private javax.swing.JLabel jLabelUsernameES;
     private javax.swing.JPanel jPanelES;
     private javax.swing.JPanel jPanelRS;
-    private javax.swing.JFormattedTextField jTextFieldCPFES;
-    private javax.swing.JFormattedTextField jTextFieldNameES;
-    private javax.swing.JFormattedTextField jTextFieldPasswordES;
-    private javax.swing.JFormattedTextField jTextFieldUsernameES;
+    private javax.swing.JPasswordField passSenha;
+    private javax.swing.JFormattedTextField txtCpf;
+    private javax.swing.JFormattedTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

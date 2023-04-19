@@ -33,7 +33,7 @@ public class ServiceCliente implements IServiceCliente {
     
     //OBJETO
     
-    private final IClienteDao daoCliente = (IClienteDao) new ClienteDao();
+    private final IClienteDao daoCliente = new ClienteDao();
         
 
     @Override

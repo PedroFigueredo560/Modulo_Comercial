@@ -20,7 +20,7 @@ public class BaseDAO<Entity extends PersistenceEntity> implements IBaseDAO<Entit
     protected static EntityManager entityManager;
     
     static{
-        EntityManagerFactory fac = Persistence.createEntityManagerFactory("modulocomercial");
+        EntityManagerFactory fac = Persistence.createEntityManagerFactory("modulo_comercial");
         entityManager = fac.createEntityManager();
     }
     

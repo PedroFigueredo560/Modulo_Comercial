@@ -47,7 +47,7 @@ public class Register_ScreenUser extends javax.swing.JFrame {
     //logo em seguida vai verificar se esse login ja existe no banco de dados
     //se existir ela se chama novamente para gerar outro numero e fazer a checagem novamente
     //se der tudo certo ele retorna o usario 
-    String validaUsuario(){
+    private String validaUsuario(){
     usuario=(100+num1.nextInt(900))+"CLI"+(100+num2.nextInt(900));
     for(int i = 0; i < clientes.size(); i++){
         if(usuario.equals(clientes.get(i).getUsuario())){
@@ -57,18 +57,20 @@ public class Register_ScreenUser extends javax.swing.JFrame {
     return usuario;
     }
     
+    
+    
     //validaçoes()
     private boolean validaCampos(){
         if(user.getNome().equals("")){
-            JOptionPane.showMessageDialog(null,"O campo name nao pode estar em branco");
+            JOptionPane.showMessageDialog(null,"O campo name não pode estar em branco");
             return false;
         }
         if(user.getEmail().equals("")){
-            JOptionPane.showMessageDialog(null,"O campo email nao pode estar em branco");
+            JOptionPane.showMessageDialog(null,"O campo email não pode estar em branco");
             return false;
         }
         if(user.getSenha().equals("")){
-            JOptionPane.showMessageDialog(null,"O campo password nao pode estar em branco");
+            JOptionPane.showMessageDialog(null,"O campo password não pode estar em branco");
             return false;
         }
         
@@ -214,18 +216,18 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         String senha = new String(passSenha.getPassword());
         //verfica se os campos estao todos preenchidos
         if(validaCampos() == true){
-        user.setNome(txtName.getText());
-        user.setSenha(senha);
-        user.setEmail(txtEmail.getText());
-        user.setUsuario(validaUsuario());
+            user.setNome(txtName.getText());
+            user.setSenha(senha);
+            user.setEmail(txtEmail.getText());
+            user.setUsuario(validaUsuario());
         //mostra o login do cliente
-        JOptionPane.showMessageDialog(null,"O login do cliente é:" + usuario);           
+            JOptionPane.showMessageDialog(null,"O login do funcionario é:" + usuario);           
         //salva o usuario
-        FacadeInstanceCliente.getInstance().saveCliente(user);
+            FacadeInstanceCliente.getInstance().saveCliente(user);
         //limpa os campos
-        txtName.setText("");
-        txtEmail.setText("");
-        passSenha.setText("");
+            txtName.setText("");
+            txtEmail.setText("");
+            passSenha.setText("");
         
        }
         
