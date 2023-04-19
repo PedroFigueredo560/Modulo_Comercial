@@ -141,7 +141,6 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jPanelRS.add(jComboBoxFunctionES);
         jComboBoxFunctionES.setBounds(130, 280, 220, 30);
 
-        jButtonRETURNES.setBackground(new java.awt.Color(255, 255, 255));
         jButtonRETURNES.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonRETURNES.setForeground(new java.awt.Color(204, 0, 0));
         jButtonRETURNES.setText("RETURN");
@@ -154,7 +153,6 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jPanelRS.add(jButtonRETURNES);
         jButtonRETURNES.setBounds(260, 340, 90, 30);
 
-        jButtonREGISTERES.setBackground(new java.awt.Color(255, 255, 255));
         jButtonREGISTERES.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonREGISTERES.setForeground(new java.awt.Color(0, 102, 153));
         jButtonREGISTERES.setText("REGISTER");
@@ -177,25 +175,25 @@ public class Register_ScreenFunc extends javax.swing.JFrame {
         jLabelCPFES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCPFES.setText("CPF:");
         jPanelRS.add(jLabelCPFES);
-        jLabelCPFES.setBounds(90, 240, 40, 20);
+        jLabelCPFES.setBounds(90, 240, 40, 21);
 
         jLabelPasswordES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelPasswordES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPasswordES.setText("PASSWORD:");
         jPanelRS.add(jLabelPasswordES);
-        jLabelPasswordES.setBounds(40, 190, 90, 20);
+        jLabelPasswordES.setBounds(40, 190, 90, 21);
 
         jLabelUsernameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelUsernameES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsernameES.setText("USERNAME:");
         jPanelRS.add(jLabelUsernameES);
-        jLabelUsernameES.setBounds(40, 140, 90, 20);
+        jLabelUsernameES.setBounds(40, 140, 90, 21);
 
         jLabelNameES.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelNameES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNameES.setText("NAME:");
         jPanelRS.add(jLabelNameES);
-        jLabelNameES.setBounds(80, 90, 50, 20);
+        jLabelNameES.setBounds(80, 90, 50, 21);
 
         jLabelBackgroundES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         jPanelRS.add(jLabelBackgroundES);
