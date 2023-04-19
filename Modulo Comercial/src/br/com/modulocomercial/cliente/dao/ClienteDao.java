@@ -11,11 +11,8 @@ import javax.persistence.Query;
 /**
  *
  * @author Victor
- */
-
-public class ClienteDao {
-    
-    public class FuncionarioDao extends BaseDAO<Cliente> implements IClienteDao {
+ */    
+public class ClienteDao extends BaseDAO<Cliente> implements IClienteDao {
      
     @Override
     public List<Cliente> findById(String id) {
@@ -24,6 +21,5 @@ public class ClienteDao {
         query.setParameter("id", id);
         return query.getResultList();
         
-        }
-    }     
-}
+    }
+}     

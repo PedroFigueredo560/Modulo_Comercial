@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.com.modulocomercial.funcionario.model;
+
 import br.com.modulocomercial.infrastructure.model.PersistenceEntity;
 import javax.persistence.Table;
 import javax.persistence.Entity;       

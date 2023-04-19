@@ -5,6 +5,7 @@
 package br.com.modulocomercial.cliente.model;
 
 import br.com.modulocomercial.infrastructure.model.PersistenceEntity;
+import java.io.Serializable;
 import javax.persistence.Table;
 import javax.persistence.Entity;       
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ import javax.persistence.Id;
 
 @Entity
 @Table
-public class Cliente extends PersistenceEntity{
+public class Cliente extends PersistenceEntity implements Serializable{
     
     //Variáveis
     
