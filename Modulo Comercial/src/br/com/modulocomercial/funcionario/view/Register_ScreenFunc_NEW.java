@@ -1,6 +1,12 @@
 package br.com.modulocomercial.funcionario.view;
 
+import br.com.modulocomercial.funcionario.facade.FacadeInstanceFuncionario;
+import br.com.modulocomercial.funcionario.model.Funcionario;
+import br.com.modulocomercial.view.Principal_Screen_NEW;
+import java.util.List;
+import java.util.Random;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,6 +20,16 @@ import javax.swing.JFrame;
 
 
 public class Register_ScreenFunc_NEW extends javax.swing.JFrame {
+    //String usuario 
+    String usuario;
+
+    //cria numeros aleatorios
+    List<Funcionario> funcionarios = FacadeInstanceFuncionario.getInstance().getAllFuncionario();
+        Random num1 = new Random();
+        Random num2 = new Random();
+        
+    //construtor de cliente
+    Funcionario user = new Funcionario();
 
     /**
      * Creates new form Register_Screen
@@ -21,6 +37,40 @@ public class Register_ScreenFunc_NEW extends javax.swing.JFrame {
     public Register_ScreenFunc_NEW() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    private String validaUsuario(){
+        usuario=(100+num1.nextInt(900))+"CLI"+(100+num2.nextInt(900));
+        for(int i = 0; i < funcionarios.size(); i++){
+            if(usuario.equals(funcionarios.get(i).getUsuario())){
+                validaUsuario();
+            }    
+        }
+        return usuario;
+    }
+    
+    private boolean validaCampos(){
+        if(user.getNome().equals("")){
+            JOptionPane.showMessageDialog(null,"O campo name não pode estar em branco");
+            return false;
+        }
+        if(user.getCpf().equals("")){
+            JOptionPane.showMessageDialog(null,"O campo cpf não pode estar em branco");
+            return false;
+        }
+        if(user.getSenha().equals("")){
+            JOptionPane.showMessageDialog(null,"O campo password não pode estar em branco");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private String valida_cargo(){
+        //pega a saida do combo_box e transforma em uma string
+        String ocupacao = (String)this.jComboBoxFunctionES.getSelectedItem();
+        
+        return ocupacao;
     }
 
     /**
@@ -255,6 +305,24 @@ public class Register_ScreenFunc_NEW extends javax.swing.JFrame {
 
     private void jButtonREGISTERESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonREGISTERESMouseClicked
         // TODO add your handling code here:
+        //define uma variavel senha e passa para ela o resultado de get password transformado de Char para String
+        String senha = new String(jTextFieldPasswordES.getText());
+        //verfica se os campos estao todos preenchidos
+        if(validaCampos() == true){
+            user.setNome(jTextFieldNameES.getText());
+            user.setSenha(senha);
+            user.setCpf(jTextFieldCPFES.getText());
+            user.setUsuario(validaUsuario());
+            user.setCargo(valida_cargo());
+        //mostra o login do cliente
+            JOptionPane.showMessageDialog(null,"O login do cliente é:" + usuario);           
+        //salva o usuario
+            FacadeInstanceFuncionario.getInstance().saveFuncionario(user);
+        //limpa os campos
+            this.jTextFieldNameES.setText("");
+            this.jTextFieldCPFES.setText("");
+            this.jTextFieldPasswordES.setText("");
+        }
     }//GEN-LAST:event_jButtonREGISTERESMouseClicked
 
     private void jButtonRETURNESMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRETURNESMouseClicked

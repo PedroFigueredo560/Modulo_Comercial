@@ -10,7 +10,16 @@ package br.com.modulocomercial.view;
  * @author joanb
  */
 
+import br.com.modulocomercial.cliente.facade.FacadeInstanceCliente;
+import br.com.modulocomercial.cliente.model.Cliente;
+import br.com.modulocomercial.cliente.view.Profile_Screen;
+import br.com.modulocomercial.cliente.view.Register_ScreenUser_NEW;
+import br.com.modulocomercial.funcionario.facade.FacadeInstanceFuncionario;
+import br.com.modulocomercial.funcionario.model.Funcionario;
+import br.com.modulocomercial.funcionario.view.Register_ScreenFunc_NEW;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Principal_Screen_NEW extends javax.swing.JFrame {
 
@@ -210,6 +219,9 @@ public class Principal_Screen_NEW extends javax.swing.JFrame {
 
     private void jCancelButtonLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelButtonLSActionPerformed
         // TODO add your handling code here:
+        
+        this.jtxtLoginLS.setText("");
+        this.jPasswordFieldPassLS.setText("");
     }//GEN-LAST:event_jCancelButtonLSActionPerformed
 
     private void jLabelNEWRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelNEWRegisterMouseClicked
@@ -223,6 +235,17 @@ public class Principal_Screen_NEW extends javax.swing.JFrame {
 
     private void jLoginButtonLSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonLSActionPerformed
         // TODO add your handling code here:
+        String login=this.jtxtLoginLS.getText();
+        //verifica se e usuario ou cliente por meio do codigo de login
+       if(login.contains("CLI")){
+           this.makeLoginUser();
+       }    
+       else if(login.contains("FUC")){
+            this.makeLoginEmployee();
+       }
+       else {
+           JOptionPane.showMessageDialog(null,"Nome de usario invalido");
+       }
     }//GEN-LAST:event_jLoginButtonLSActionPerformed
 
     private void jCheckBoxEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEmployeeActionPerformed
@@ -291,6 +314,80 @@ public class Principal_Screen_NEW extends javax.swing.JFrame {
                 new Principal_Screen_NEW().setVisible(true);
             }
         });
+    }
+    
+    private Funcionario validarLoginEmployee() {
+        List<Funcionario> users = FacadeInstanceFuncionario.getInstance().getAllFuncionario();
+        String senha = new String(jPasswordFieldPassLS.getPassword());
+        String login = this.jtxtLoginLS.getText();
+        
+        Funcionario user = new Funcionario();
+        user.setSenha(senha);
+        user.setUsuario(login);
+        for (Funcionario func : users) {
+            if (func.getUsuario().equals(func.getUsuario()) && func.getSenha().equals(user.getSenha())) {
+                return func;
+            }
+        }
+    
+        return null;
+    }
+    
+    private void makeLoginEmployee() {
+        Funcionario user = this.validarLoginEmployee();
+        if (user == null) {
+            // errro
+            JOptionPane.showMessageDialog(null, "Erro, usuário invalido");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Bem Vindo " + user.getNome(), "Sucesso!",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            Profile_Screen psr = new Profile_Screen();
+            psr.setVisible(true);
+            psr.pack();
+            psr.setLocationRelativeTo(null);
+            psr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose(); 
+            this.setVisible(false);
+        }
+    }
+    
+    private Cliente validarLoginUser() {
+        List<Cliente> users = FacadeInstanceCliente.getInstance().getAllCliente();
+        String senha = new String(jPasswordFieldPassLS.getPassword());
+        String login = this.jtxtLoginLS.getText();
+        
+        Cliente user = new Cliente();
+        user.setSenha(senha);
+        user.setUsuario(login);
+        for (Cliente cli : users) {
+            if (cli.getUsuario().equals(cli.getUsuario()) && cli.getSenha().equals(user.getSenha())) {
+                return cli;
+            }
+        }
+    
+        return null;
+    }
+    
+    private void makeLoginUser() {
+        Cliente user = this.validarLoginUser();
+        if (user == null) {
+            // errro
+            JOptionPane.showMessageDialog(null, "Erro, usuário invalido");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Bem Vindo " + user.getNome(), "Sucesso!",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            Profile_Screen psr = new Profile_Screen();
+            psr.setVisible(true);
+            psr.pack();
+            psr.setLocationRelativeTo(null);
+            psr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose(); 
+            this.setVisible(false);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

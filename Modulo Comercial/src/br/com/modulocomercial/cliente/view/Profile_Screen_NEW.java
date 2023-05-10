@@ -1,5 +1,6 @@
 package br.com.modulocomercial.cliente.view;
 
+import br.com.modulocomercial.view.Principal_Screen_NEW;
 import javax.swing.JFrame;
 
 /*

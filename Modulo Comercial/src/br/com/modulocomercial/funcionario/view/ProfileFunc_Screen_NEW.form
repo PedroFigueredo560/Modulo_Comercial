@@ -393,6 +393,7 @@
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jLabelCodeEP" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabelCodeEmployeeNumber" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabelNameEP" min="-2" pref="210" max="-2" attributes="0"/>
