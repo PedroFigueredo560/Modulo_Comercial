@@ -119,7 +119,6 @@ public class Profile_Screen extends javax.swing.JFrame {
         getContentPane().add(jPromotionPS);
         jPromotionPS.setBounds(380, 80, 370, 350);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 102, 153));
         jButton1.setText("EDIT PROFILE");
@@ -170,7 +169,6 @@ public class Profile_Screen extends javax.swing.JFrame {
         getContentPane().add(jLabelImageUserPS);
         jLabelImageUserPS.setBounds(30, 100, 200, 190);
 
-        ReturnButtonPS.setBackground(new java.awt.Color(255, 255, 255));
         ReturnButtonPS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         ReturnButtonPS.setForeground(new java.awt.Color(204, 0, 0));
         ReturnButtonPS.setText("RETURN");

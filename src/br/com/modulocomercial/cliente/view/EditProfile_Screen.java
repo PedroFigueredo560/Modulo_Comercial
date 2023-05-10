@@ -116,7 +116,6 @@ public class EditProfile_Screen extends javax.swing.JFrame {
         getContentPane().add(jTextFieldPasswordEPS);
         jTextFieldPasswordEPS.setBounds(170, 350, 220, 30);
 
-        jButtonReturnEPS.setBackground(new java.awt.Color(255, 255, 255));
         jButtonReturnEPS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonReturnEPS.setForeground(new java.awt.Color(204, 0, 0));
         jButtonReturnEPS.setText("RETURN");
@@ -129,7 +128,6 @@ public class EditProfile_Screen extends javax.swing.JFrame {
         getContentPane().add(jButtonReturnEPS);
         jButtonReturnEPS.setBounds(300, 450, 90, 30);
 
-        jButtonConfirmedEPS.setBackground(new java.awt.Color(255, 255, 255));
         jButtonConfirmedEPS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonConfirmedEPS.setForeground(new java.awt.Color(0, 102, 153));
         jButtonConfirmedEPS.setText("CONFIRM");
@@ -157,25 +155,25 @@ public class EditProfile_Screen extends javax.swing.JFrame {
         jLabelEmailEPS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEmailEPS.setText("EMAIL:");
         getContentPane().add(jLabelEmailEPS);
-        jLabelEmailEPS.setBounds(110, 410, 60, 20);
+        jLabelEmailEPS.setBounds(110, 410, 60, 21);
 
         jLabelPasswordEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelPasswordEPS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPasswordEPS.setText("NEW PASSWORD:");
         getContentPane().add(jLabelPasswordEPS);
-        jLabelPasswordEPS.setBounds(40, 360, 130, 20);
+        jLabelPasswordEPS.setBounds(40, 360, 139, 21);
 
         jLabelUsernameEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelUsernameEPS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelUsernameEPS.setText("LAST PASSWORD:");
         getContentPane().add(jLabelUsernameEPS);
-        jLabelUsernameEPS.setBounds(30, 310, 140, 20);
+        jLabelUsernameEPS.setBounds(30, 310, 142, 21);
 
         jLabelNameEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelNameEPS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNameEPS.setText("NAME:");
         getContentPane().add(jLabelNameEPS);
-        jLabelNameEPS.setBounds(120, 260, 50, 20);
+        jLabelNameEPS.setBounds(120, 260, 50, 21);
 
         jBackgroundEPS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
         getContentPane().add(jBackgroundEPS);

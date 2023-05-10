@@ -6,6 +6,7 @@ package br.com.modulocomercial.infrastructure.service;
 
 import br.com.modulocomercial.cliente.model.Cliente;
 import br.com.modulocomercial.funcionario.model.Funcionario;
+import br.com.modulocomercial.produto.model.Produto;
 import java.util.List;
 
 /**
@@ -26,4 +27,11 @@ public interface IFacade {
     public abstract void deleteFuncionario(Funcionario funcionario);
     public abstract List<Funcionario> getAllFuncionarios();
     public List<Funcionario> findByNameFuncionario(String name);
+    
+    //produto
+    public abstract Produto saveProduto(Produto produto);
+    public abstract Produto updateProduto(Produto produto);
+    public abstract void deleteProduto(Produto produto);
+    public abstract List<Produto> getAllProdutos();
+    public List<Produto> findByNameProduto(String name);
 }

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class ServiceCliente implements IServiceCliente{
     
-     //Constantes para condições de erro
+    //Constantes para condições de erro
     
     //Cliente Null
     public final static String CLIENTE_NULL = "Cliente null";

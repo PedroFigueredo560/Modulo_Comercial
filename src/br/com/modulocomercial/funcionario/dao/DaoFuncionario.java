@@ -16,7 +16,7 @@ public class DaoFuncionario extends BaseDAO<Funcionario> implements IDaoFunciona
 
     @Override
     public List<Funcionario> findByNameFuncionario(String name) {
-        String busca = "SELECT a FROM Funcionarios AS a WHERE a.nome=:nome";
+        String busca = "SELECT a FROM Funcionario AS a WHERE a.nome=:nome";
         Query query = entityManager.createQuery(busca);
         query.setParameter("nome", name);
         return query.getResultList();  

@@ -19,9 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class Register_ScreenUser extends javax.swing.JFrame {
 //String usuario 
-    String usuario;
-    long id;
-    
+    String usuario;    
 //carega todos os clientes do banco de dados para verificar se não existem 2 logins iguais
     List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
 //cria numeros aleatorios    
@@ -198,7 +196,7 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         getContentPane().add(passSenha);
         passSenha.setBounds(130, 130, 220, 30);
 
-        jBackgroundUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner.jpg"))); // NOI18N
+        jBackgroundUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/modulocomercial/imagens/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner_1.jpg"))); // NOI18N
         getContentPane().add(jBackgroundUS);
         jBackgroundUS.setBounds(0, 50, 380, 310);
 
@@ -297,10 +295,8 @@ public class Register_ScreenUser extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Register_ScreenUser().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Register_ScreenUser().setVisible(true);
         });
     }
 

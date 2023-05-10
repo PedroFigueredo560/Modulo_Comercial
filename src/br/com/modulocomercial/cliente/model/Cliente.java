@@ -18,6 +18,7 @@ public class Cliente extends PersistenceEntity implements Serializable{
     //variaveis de cliente
     private String email;
     private String nome;
+    private String username;
     private String login;
     private String senha;
 
@@ -38,6 +39,14 @@ public class Cliente extends PersistenceEntity implements Serializable{
         this.nome = nome;
     }
 
+     public String getUserNome() {
+        return username;
+    }
+
+    public void setUserName(String username) {
+        this.username = username;
+    }
+    
     public String getLogin() {
         return login;
     }
