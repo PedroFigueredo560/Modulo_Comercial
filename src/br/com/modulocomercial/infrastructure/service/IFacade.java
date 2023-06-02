@@ -7,6 +7,7 @@ package br.com.modulocomercial.infrastructure.service;
 import br.com.modulocomercial.cliente.model.Cliente;
 import br.com.modulocomercial.funcionario.model.Funcionario;
 import br.com.modulocomercial.produto.model.Produto;
+import br.com.modulocomercial.venda.model.Venda;
 import java.util.List;
 
 /**
@@ -34,4 +35,12 @@ public interface IFacade {
     public abstract void deleteProduto(Produto produto);
     public abstract List<Produto> getAllProdutos();
     public List<Produto> findByNameProduto(String name);
+    
+    //venda
+    public abstract Venda saveVenda(Venda venda);
+    public abstract Venda updateVenda(Venda venda);
+    public abstract void deleteVenda(Venda venda);
+    public abstract List<Venda> getAllVendas();
+    public List<Venda> findByNameVenda(String name);
+    public List<Venda> findByClienteVenda(int idCliente);
 }

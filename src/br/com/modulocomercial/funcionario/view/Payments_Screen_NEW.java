@@ -4,7 +4,11 @@
  */
 package br.com.modulocomercial.funcionario.view;
 
+import br.com.modulocomercial.funcionario.model.Funcionario;
+import br.com.modulocomercial.infrastructure.service.FacadeInstance;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +23,28 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
+    
+private boolean validaCampos(){
+        List <Funcionario> employee  = FacadeInstance.getInstance().getAllFuncionarios();
+        
+        if(txtValue.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The field Value cannot be blank");
+            return false;
+        }
+        
+        if(txtEmployeeCpf.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The field Employee Code cannot be blank");
+            return false;
+        }
+        for(Funcionario func : employee){
+            if(func.getCpf().equals(txtEmployeeCpf.getText())){
+                return true;
+            }
+        }
+        JOptionPane.showMessageDialog(null,"Error, invalid employee cpf!"); 
+        return false;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,15 +58,17 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
         jPanelBoardPYS = new javax.swing.JPanel();
         jLabelPaymentNamePYS = new javax.swing.JLabel();
         jLabelPaymentMethodPYS = new javax.swing.JLabel();
-        jComboBoxPaymentMethodPYS = new javax.swing.JComboBox<>();
+        cbxPayMetod = new javax.swing.JComboBox<>();
         jLabelDiscountPYS = new javax.swing.JLabel();
-        jTextFieldDiscountPYS = new javax.swing.JTextField();
+        txtDiscount = new javax.swing.JTextField();
         jLabelTotalValuePYS = new javax.swing.JLabel();
-        jTextFieldTotalValuePYS = new javax.swing.JTextField();
+        txtTotalValue = new javax.swing.JTextField();
         jLabelEmployeeeCodePYS = new javax.swing.JLabel();
-        jTextFieldEmployeeCodePYS = new javax.swing.JTextField();
+        txtEmployeeCpf = new javax.swing.JTextField();
         jButtonPrintNotePYS = new javax.swing.JButton();
         jButtonReturnPYS = new javax.swing.JButton();
+        txtValue = new javax.swing.JTextField();
+        jLabelValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,38 +102,38 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
         jLabelPaymentMethodPYS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelPaymentMethodPYS.setText("PAYMENT METHOD:");
 
-        jComboBoxPaymentMethodPYS.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBoxPaymentMethodPYS.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBoxPaymentMethodPYS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IN CASH", "CREDIT CARD", "DEBIT CARD", "NOTE (FOR 30 DAYS)", "30/60 DAYS" }));
+        cbxPayMetod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IN CASH", "CREDIT CARD", "DEBIT CARD", "NOTE (FOR 30 DAYS)", "30/60 DAYS" }));
 
         jLabelDiscountPYS.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
         jLabelDiscountPYS.setForeground(new java.awt.Color(15, 27, 54));
-        jLabelDiscountPYS.setText("DISCOUNT:");
+        jLabelDiscountPYS.setText("DISCOUNT %:");
 
-        jTextFieldDiscountPYS.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldDiscountPYS.setForeground(new java.awt.Color(0, 0, 0));
+        txtDiscount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDiscountFocusLost(evt);
+            }
+        });
 
         jLabelTotalValuePYS.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
         jLabelTotalValuePYS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelTotalValuePYS.setText("TOTAL VALUE:");
 
-        jTextFieldTotalValuePYS.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldTotalValuePYS.setForeground(new java.awt.Color(0, 0, 0));
+        txtTotalValue.setEditable(false);
 
         jLabelEmployeeeCodePYS.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
         jLabelEmployeeeCodePYS.setForeground(new java.awt.Color(15, 27, 54));
-        jLabelEmployeeeCodePYS.setText("EMPLOYEE CODE:");
+        jLabelEmployeeeCodePYS.setText("EMPLOYEE CPF:");
 
-        jTextFieldEmployeeCodePYS.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldEmployeeCodePYS.setForeground(new java.awt.Color(0, 0, 0));
-
-        jButtonPrintNotePYS.setBackground(new java.awt.Color(255, 255, 255));
         jButtonPrintNotePYS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonPrintNotePYS.setForeground(new java.awt.Color(15, 27, 54));
         jButtonPrintNotePYS.setText("PRINT NOTE");
         jButtonPrintNotePYS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonPrintNotePYS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintNotePYSActionPerformed(evt);
+            }
+        });
 
-        jButtonReturnPYS.setBackground(new java.awt.Color(255, 255, 255));
         jButtonReturnPYS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonReturnPYS.setForeground(new java.awt.Color(204, 0, 0));
         jButtonReturnPYS.setText("RETURN");
@@ -116,6 +143,16 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
                 jButtonReturnPYSActionPerformed(evt);
             }
         });
+
+        txtValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValueActionPerformed(evt);
+            }
+        });
+
+        jLabelValue.setFont(new java.awt.Font("Impact", 0, 20)); // NOI18N
+        jLabelValue.setForeground(new java.awt.Color(15, 27, 54));
+        jLabelValue.setText("VALUE:");
 
         javax.swing.GroupLayout jPanelPYSLayout = new javax.swing.GroupLayout(jPanelPYS);
         jPanelPYS.setLayout(jPanelPYSLayout);
@@ -128,44 +165,51 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
                     .addComponent(jLabelEmployeeeCodePYS)
                     .addComponent(jLabelPaymentMethodPYS)
                     .addComponent(jLabelDiscountPYS)
-                    .addComponent(jLabelTotalValuePYS))
+                    .addComponent(jLabelTotalValuePYS)
+                    .addComponent(jLabelValue))
                 .addGap(35, 35, 35)
-                .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanelPYSLayout.createSequentialGroup()
-                        .addComponent(jButtonReturnPYS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonPrintNotePYS))
-                    .addComponent(jComboBoxPaymentMethodPYS, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldDiscountPYS, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldTotalValuePYS)
-                    .addComponent(jTextFieldEmployeeCodePYS, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPYSLayout.createSequentialGroup()
+                            .addComponent(jButtonReturnPYS)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonPrintNotePYS))
+                        .addComponent(cbxPayMetod, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtDiscount)
+                        .addComponent(txtTotalValue, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtEmployeeCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                    .addComponent(txtValue, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
         jPanelPYSLayout.setVerticalGroup(
             jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPYSLayout.createSequentialGroup()
                 .addComponent(jPanelBoardPYS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
-                .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(83, 83, 83)
+                .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelPaymentMethodPYS)
-                    .addComponent(jComboBoxPaymentMethodPYS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxPayMetod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelValue)
+                    .addComponent(txtValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDiscountPYS)
-                    .addComponent(jTextFieldDiscountPYS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTotalValuePYS)
-                    .addComponent(jTextFieldTotalValuePYS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotalValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEmployeeeCodePYS)
-                    .addComponent(jTextFieldEmployeeCodePYS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmployeeCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addGroup(jPanelPYSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonPrintNotePYS)
                     .addComponent(jButtonReturnPYS))
-                .addGap(0, 99, Short.MAX_VALUE))
+                .addGap(0, 85, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,6 +234,31 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
         rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();    
     }//GEN-LAST:event_jButtonReturnPYSActionPerformed
+
+    private void txtValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValueActionPerformed
+
+    private void jButtonPrintNotePYSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintNotePYSActionPerformed
+        // TODO add your handling code here:
+        if(validaCampos() == true){
+        float value = Float.parseFloat(txtValue.getText());
+        float discount = Float.parseFloat(txtDiscount.getText());
+        float totalValue = value * (1-(discount/100));
+        JOptionPane.showMessageDialog(null,"Pay method: "+cbxPayMetod.getSelectedItem()+"\nValue = "+value+"\nDiscount = "+discount+"% \nTotal Value = "+totalValue);
+        
+        
+        
+        }
+    }//GEN-LAST:event_jButtonPrintNotePYSActionPerformed
+
+    private void txtDiscountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiscountFocusLost
+        // TODO add your handling code here:
+        float value = Float.parseFloat(txtValue.getText());
+        float discount = Float.parseFloat(txtDiscount.getText());
+        float totalValue = value * (1-(discount/100));
+        txtTotalValue.setText(String.valueOf(totalValue));
+    }//GEN-LAST:event_txtDiscountFocusLost
 
     /**
      * @param args the command line arguments
@@ -230,18 +299,20 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbxPayMetod;
     private javax.swing.JButton jButtonPrintNotePYS;
     private javax.swing.JButton jButtonReturnPYS;
-    private javax.swing.JComboBox<String> jComboBoxPaymentMethodPYS;
     private javax.swing.JLabel jLabelDiscountPYS;
     private javax.swing.JLabel jLabelEmployeeeCodePYS;
     private javax.swing.JLabel jLabelPaymentMethodPYS;
     private javax.swing.JLabel jLabelPaymentNamePYS;
     private javax.swing.JLabel jLabelTotalValuePYS;
+    private javax.swing.JLabel jLabelValue;
     private javax.swing.JPanel jPanelBoardPYS;
     private javax.swing.JPanel jPanelPYS;
-    private javax.swing.JTextField jTextFieldDiscountPYS;
-    private javax.swing.JTextField jTextFieldEmployeeCodePYS;
-    private javax.swing.JTextField jTextFieldTotalValuePYS;
+    private javax.swing.JTextField txtDiscount;
+    private javax.swing.JTextField txtEmployeeCpf;
+    private javax.swing.JTextField txtTotalValue;
+    private javax.swing.JTextField txtValue;
     // End of variables declaration//GEN-END:variables
 }

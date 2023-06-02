@@ -1,6 +1,11 @@
 package br.com.modulocomercial.cliente.view;
 
+import br.com.modulocomercial.cliente.model.Cliente;
+import br.com.modulocomercial.infrastructure.service.FacadeInstance;
+import br.com.modulocomercial.view.Principal_Screen_NEW;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -12,7 +17,9 @@ import javax.swing.JFrame;
  * @author joanb
  */
 public class EditProfile_Screen_NEW extends javax.swing.JFrame {
-
+    List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
+    Cliente user = new Cliente();
+    Cliente cli = Principal_Screen_NEW.clien;
     /**
      * Creates new form EditProfile_Screen
      */
@@ -20,7 +27,34 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    
+    
+    
+     //validaçoes()
+    private boolean validaCampos(){
+        String senha = cli.getSenha();
+         JOptionPane.showMessageDialog(null,"nome"+cli.getNome()+"\nsenha"+cli.getSenha());
+        if(!txtName.getText().equals("")){
+            cli.setNome(txtName.getText());
+        }          
+        if(txtLastPassword.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"The LastPassword field cannot be blank");
+            return false;
+        }
+        if(txtLastPassword.getText().equals(senha)){    
+        }
+        else{       
+            JOptionPane.showMessageDialog(null,"The LastPassword field don't match with the database");
+            return false;   
+        }
+        if(!txtNewPassword.getText().equals("")){
+            cli.setSenha(txtNewPassword.getText());
+        } 
+        if(!txtEmail.getText().equals("")){
+            cli.setEmail(txtEmail.getText());
+        }        
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,18 +66,18 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
 
         jLabelPanelEPS = new javax.swing.JPanel();
         jLabelEditProfileEPS = new javax.swing.JLabel();
-        jTextFieldEmailEPS = new javax.swing.JFormattedTextField();
-        jTextFieldNameEPS = new javax.swing.JFormattedTextField();
-        jTextFieldUsernameEPS = new javax.swing.JFormattedTextField();
-        jTextFieldPasswordEPS = new javax.swing.JFormattedTextField();
         jButtonReturnEPS = new javax.swing.JButton();
         jButtonConfirmedEPS = new javax.swing.JButton();
         jLabelIconEPS = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabelEmailEPS = new javax.swing.JLabel();
+        jLabelNameEPS = new javax.swing.JLabel();
         jLabelPasswordEPS = new javax.swing.JLabel();
         jLabelUsernameEPS = new javax.swing.JLabel();
-        jLabelNameEPS = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        txtEmail = new javax.swing.JFormattedTextField();
+        txtNewPassword = new javax.swing.JFormattedTextField();
+        txtLastPassword = new javax.swing.JFormattedTextField();
+        txtName = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Edit Profile Screen");
@@ -77,47 +111,6 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jLabelPanelEPS);
         jLabelPanelEPS.setBounds(0, 0, 790, 60);
 
-        jTextFieldEmailEPS.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldEmailEPS.setForeground(new java.awt.Color(0, 0, 0));
-        jTextFieldEmailEPS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmailEPSActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldEmailEPS);
-        jTextFieldEmailEPS.setBounds(300, 370, 220, 30);
-
-        jTextFieldNameEPS.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldNameEPS.setForeground(new java.awt.Color(0, 0, 0));
-        jTextFieldNameEPS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNameEPSActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldNameEPS);
-        jTextFieldNameEPS.setBounds(300, 220, 220, 30);
-
-        jTextFieldUsernameEPS.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldUsernameEPS.setForeground(new java.awt.Color(0, 0, 0));
-        jTextFieldUsernameEPS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUsernameEPSActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldUsernameEPS);
-        jTextFieldUsernameEPS.setBounds(300, 270, 220, 30);
-
-        jTextFieldPasswordEPS.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldPasswordEPS.setForeground(new java.awt.Color(0, 0, 0));
-        jTextFieldPasswordEPS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPasswordEPSActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldPasswordEPS);
-        jTextFieldPasswordEPS.setBounds(300, 320, 220, 30);
-
-        jButtonReturnEPS.setBackground(new java.awt.Color(255, 255, 255));
         jButtonReturnEPS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonReturnEPS.setForeground(new java.awt.Color(204, 0, 0));
         jButtonReturnEPS.setText("RETURN");
@@ -130,7 +123,6 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jButtonReturnEPS);
         jButtonReturnEPS.setBounds(430, 420, 90, 30);
 
-        jButtonConfirmedEPS.setBackground(new java.awt.Color(255, 255, 255));
         jButtonConfirmedEPS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButtonConfirmedEPS.setForeground(new java.awt.Color(0, 102, 153));
         jButtonConfirmedEPS.setText("CONFIRM");
@@ -152,41 +144,87 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jLabelIconEPS);
         jLabelIconEPS.setBounds(340, 70, 130, 150);
 
+        jPanel1.setBackground(new java.awt.Color(244, 245, 241));
+
         jLabelEmailEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelEmailEPS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelEmailEPS.setText("EMAIL:");
-        getContentPane().add(jLabelEmailEPS);
-        jLabelEmailEPS.setBounds(240, 380, 60, 20);
-
-        jLabelPasswordEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
-        jLabelPasswordEPS.setForeground(new java.awt.Color(15, 27, 54));
-        jLabelPasswordEPS.setText("NEW PASSWORD:");
-        getContentPane().add(jLabelPasswordEPS);
-        jLabelPasswordEPS.setBounds(170, 330, 130, 20);
-
-        jLabelUsernameEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
-        jLabelUsernameEPS.setForeground(new java.awt.Color(15, 27, 54));
-        jLabelUsernameEPS.setText("LAST PASSWORD:");
-        getContentPane().add(jLabelUsernameEPS);
-        jLabelUsernameEPS.setBounds(160, 280, 140, 20);
 
         jLabelNameEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
         jLabelNameEPS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelNameEPS.setText("NAME:");
-        getContentPane().add(jLabelNameEPS);
-        jLabelNameEPS.setBounds(250, 230, 50, 20);
 
-        jPanel1.setBackground(new java.awt.Color(244, 245, 241));
+        jLabelPasswordEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
+        jLabelPasswordEPS.setForeground(new java.awt.Color(15, 27, 54));
+        jLabelPasswordEPS.setText("NEW PASSWORD:");
+
+        jLabelUsernameEPS.setFont(new java.awt.Font("Unispace", 0, 16)); // NOI18N
+        jLabelUsernameEPS.setForeground(new java.awt.Color(15, 27, 54));
+        jLabelUsernameEPS.setText("LAST PASSWORD:");
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        txtNewPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewPasswordActionPerformed(evt);
+            }
+        });
+
+        txtLastPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLastPasswordActionPerformed(evt);
+            }
+        });
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 790, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelUsernameEPS)
+                    .addComponent(jLabelPasswordEPS)
+                    .addComponent(jLabelNameEPS)
+                    .addComponent(jLabelEmailEPS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(220, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNameEPS)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelUsernameEPS)
+                    .addComponent(txtLastPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPasswordEPS)
+                    .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEmailEPS)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108))
         );
 
         getContentPane().add(jPanel1);
@@ -195,21 +233,21 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldEmailEPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailEPSActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmailEPSActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void jTextFieldNameEPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNameEPSActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNameEPSActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
-    private void jTextFieldUsernameEPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsernameEPSActionPerformed
+    private void txtLastPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUsernameEPSActionPerformed
+    }//GEN-LAST:event_txtLastPasswordActionPerformed
 
-    private void jTextFieldPasswordEPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPasswordEPSActionPerformed
+    private void txtNewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPasswordEPSActionPerformed
+    }//GEN-LAST:event_txtNewPasswordActionPerformed
 
     private void jButtonReturnEPSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonReturnEPSMouseClicked
         Profile_Screen_NEW rgf = new Profile_Screen_NEW();
@@ -226,6 +264,20 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
 
     private void jButtonConfirmedEPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmedEPSActionPerformed
         // TODO add your handling code here:
+        if(validaCampos() == true){
+        //edita o cliente
+            cli = FacadeInstance.getInstance().updateCliente(cli);
+            if (cli != null) {
+                JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao salvar o Cliente");
+            }
+        //limpa os campos
+            txtName.setText("");
+            txtEmail.setText("");
+            txtLastPassword.setText("");
+            txtNewPassword.setText("");
+        }
     }//GEN-LAST:event_jButtonConfirmedEPSActionPerformed
 
     /**
@@ -257,14 +309,16 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
+    
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditProfile_Screen_NEW().setVisible(true);
+                new EditProfile_Screen_NEW().setVisible(true);      
+                 JOptionPane.showMessageDialog(null,"Leave name, new password or Email blank to not change");
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConfirmedEPS;
@@ -277,9 +331,9 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPasswordEPS;
     private javax.swing.JLabel jLabelUsernameEPS;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JFormattedTextField jTextFieldEmailEPS;
-    private javax.swing.JFormattedTextField jTextFieldNameEPS;
-    private javax.swing.JFormattedTextField jTextFieldPasswordEPS;
-    private javax.swing.JFormattedTextField jTextFieldUsernameEPS;
+    private javax.swing.JFormattedTextField txtEmail;
+    private javax.swing.JFormattedTextField txtLastPassword;
+    private javax.swing.JFormattedTextField txtName;
+    private javax.swing.JFormattedTextField txtNewPassword;
     // End of variables declaration//GEN-END:variables
 }

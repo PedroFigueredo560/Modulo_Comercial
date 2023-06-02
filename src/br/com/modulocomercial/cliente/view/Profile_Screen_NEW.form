@@ -214,12 +214,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelUserPS" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="jLabelNameProfPS" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="lblName" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabelEmailPS" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="jLabelEmailProfPS" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="lblEmail" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelIconProfile" min="-2" max="-2" attributes="0"/>
@@ -228,7 +228,7 @@
                                   <Component id="jLabelPoints" min="-2" pref="80" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="77" pref="77" max="-2" attributes="0"/>
-                                      <Component id="jLabelNumberPoints" min="-2" pref="63" max="-2" attributes="0"/>
+                                      <Component id="lblPoints" min="-2" pref="63" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -249,18 +249,18 @@
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabelPoints" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabelNumberPoints" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="lblPoints" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelUserPS" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jLabelNameProfPS" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="lblName" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelEmailPS" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jLabelEmailProfPS" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="lblEmail" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButtonEditProfilePS" min="-2" pref="30" max="-2" attributes="0"/>
@@ -288,7 +288,7 @@
             <Property name="text" type="java.lang.String" value="POINTS:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelNumberPoints">
+        <Component class="javax.swing.JLabel" name="lblPoints">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Impact" size="36" style="0"/>
@@ -310,7 +310,7 @@
             <Property name="text" type="java.lang.String" value="NAME:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelNameProfPS">
+        <Component class="javax.swing.JLabel" name="lblName">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -337,7 +337,7 @@
             <Property name="text" type="java.lang.String" value="EMAIL:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelEmailProfPS">
+        <Component class="javax.swing.JLabel" name="lblEmail">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

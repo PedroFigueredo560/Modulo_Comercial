@@ -5,9 +5,12 @@
 package br.com.modulocomercial.produto.model;
 
 import br.com.modulocomercial.infrastructure.model.PersistenceEntity;
+import br.com.modulocomercial.venda.model.Venda;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Table;
 import javax.persistence.Entity;  
+import javax.persistence.ManyToMany;
 /**
  *
  * @author Pedro Henrique
@@ -21,6 +24,7 @@ public class Produto extends PersistenceEntity implements Serializable{
     private float value;
     private int quantidade;
     
+  
     //getterres e setterres 
 
     public String getName() {
@@ -55,4 +59,5 @@ public class Produto extends PersistenceEntity implements Serializable{
         this.quantidade = quantidade;
     }
     
+     
 }

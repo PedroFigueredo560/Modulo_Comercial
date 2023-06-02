@@ -4,6 +4,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>br.com.br.com.modulocomercial.funcionario.model.Funcionario</class>
     <class>br.combr.com.modulocomercial.cliente.model.Cliente</class>
+    <class>br.com.modulocomercial.produto.model.Produto </class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;serverTimezone=UTC "/>
       <property name="javax.persistence.jdbc.user" value="root"/>

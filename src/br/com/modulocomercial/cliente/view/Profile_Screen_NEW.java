@@ -1,7 +1,12 @@
 package br.com.modulocomercial.cliente.view;
 
+import br.com.modulocomercial.venda.model.Venda;
+import br.com.modulocomercial.cliente.model.Cliente;
+import br.com.modulocomercial.infrastructure.service.FacadeInstance;
 import br.com.modulocomercial.view.Principal_Screen_NEW;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,15 +20,45 @@ import javax.swing.JFrame;
 
 
 public class Profile_Screen_NEW extends javax.swing.JFrame {
-
+    Cliente user = new Cliente();
+    Cliente cli = Principal_Screen_NEW.clien;
+    
+    public static int points;
+    
+    int idInt = Long.valueOf(cli.getId()).intValue();
+    List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
+    List<Venda> vendas = FacadeInstance.getInstance().findByClienteVenda(idInt);
+    
+    
     /**
      * Creates new form Profile_Screen
      */
     public Profile_Screen_NEW() {
         initComponents();
         this.setLocationRelativeTo(null);
+            lblName.setText(cli.getNome());
+            lblEmail.setText(cli.getEmail());
+            preencherTabela(vendas);
+            lblPoints.setText(String.valueOf(cli.getPontos()));
     }
 
+    private void preencherTabela(List<Venda> itens) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Products");
+        modelo.addColumn("Stock");
+        modelo.addColumn("Price/Purchase");
+
+        for (Venda venda : itens) {
+            Object[] linha = new Object[4];
+            linha[0] = venda.getNomeProduto();
+            linha[1] = venda.getQuantidade();
+            linha[2] = venda.getTotal();
+            modelo.addRow(linha);
+        }
+
+        jTablePS.setModel(modelo);
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,11 +76,11 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelIconProfile = new javax.swing.JLabel();
         jLabelPoints = new javax.swing.JLabel();
-        jLabelNumberPoints = new javax.swing.JLabel();
+        lblPoints = new javax.swing.JLabel();
         jLabelUserPS = new javax.swing.JLabel();
-        jLabelNameProfPS = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         jLabelEmailPS = new javax.swing.JLabel();
-        jLabelEmailProfPS = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         jButtonEditProfilePS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,9 +123,7 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
         jPromotionPS.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         jPromotionPS.setVerifyInputWhenFocusTarget(false);
 
-        jTablePS.setBackground(new java.awt.Color(255, 255, 255));
         jTablePS.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        jTablePS.setForeground(new java.awt.Color(0, 0, 0));
         jTablePS.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -129,7 +162,6 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jPromotionPS);
         jPromotionPS.setBounds(380, 80, 370, 350);
 
-        ReturnButtonPS.setBackground(new java.awt.Color(255, 255, 255));
         ReturnButtonPS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         ReturnButtonPS.setForeground(new java.awt.Color(204, 0, 0));
         ReturnButtonPS.setText("RETURN");
@@ -150,31 +182,28 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
         jLabelPoints.setForeground(new java.awt.Color(15, 27, 54));
         jLabelPoints.setText("POINTS:");
 
-        jLabelNumberPoints.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-        jLabelNumberPoints.setForeground(new java.awt.Color(15, 27, 54));
-        jLabelNumberPoints.setText("000");
+        lblPoints.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
+        lblPoints.setForeground(new java.awt.Color(15, 27, 54));
+        lblPoints.setText("000");
 
         jLabelUserPS.setFont(new java.awt.Font("Impact", 0, 22)); // NOI18N
         jLabelUserPS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelUserPS.setText("NAME:");
 
-        jLabelNameProfPS.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNameProfPS.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelNameProfPS.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelNameProfPS.setText("NAME PROFILE HERE");
-        jLabelNameProfPS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblName.setBackground(new java.awt.Color(255, 255, 255));
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblName.setText("NAME PROFILE HERE");
+        lblName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabelEmailPS.setFont(new java.awt.Font("Impact", 0, 22)); // NOI18N
         jLabelEmailPS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelEmailPS.setText("EMAIL:");
 
-        jLabelEmailProfPS.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelEmailProfPS.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelEmailProfPS.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelEmailProfPS.setText("EMAIL PROFILE HERE");
-        jLabelEmailProfPS.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblEmail.setBackground(new java.awt.Color(255, 255, 255));
+        lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmail.setText("EMAIL PROFILE HERE");
+        lblEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButtonEditProfilePS.setBackground(new java.awt.Color(255, 255, 255));
         jButtonEditProfilePS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonEditProfilePS.setForeground(new java.awt.Color(0, 102, 153));
         jButtonEditProfilePS.setText("EDIT PROFILE");
@@ -202,11 +231,11 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabelUserPS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
-                            .addComponent(jLabelNameProfPS, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabelEmailPS, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
-                            .addComponent(jLabelEmailProfPS, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabelIconProfile)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -214,7 +243,7 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
                                 .addComponent(jLabelPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(77, 77, 77)
-                                    .addComponent(jLabelNumberPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(lblPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(442, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -227,15 +256,15 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(10, 10, 10)
                             .addComponent(jLabelPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabelNumberPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelUserPS, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNameProfPS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelEmailPS, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelEmailProfPS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonEditProfilePS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -277,7 +306,7 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Profile_Screen_NEW().setVisible(true);
+                new Profile_Screen_NEW().setVisible(true);            
             }
         });
     }
@@ -286,10 +315,7 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
     private javax.swing.JButton ReturnButtonPS;
     private javax.swing.JButton jButtonEditProfilePS;
     private javax.swing.JLabel jLabelEmailPS;
-    private javax.swing.JLabel jLabelEmailProfPS;
     private javax.swing.JLabel jLabelIconProfile;
-    private javax.swing.JLabel jLabelNameProfPS;
-    private javax.swing.JLabel jLabelNumberPoints;
     private javax.swing.JLabel jLabelPoints;
     private javax.swing.JLabel jLabelUserPS;
     private javax.swing.JLabel jLabelUserProfilePS;
@@ -297,5 +323,8 @@ public class Profile_Screen_NEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelLS;
     private javax.swing.JScrollPane jPromotionPS;
     private javax.swing.JTable jTablePS;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPoints;
     // End of variables declaration//GEN-END:variables
 }

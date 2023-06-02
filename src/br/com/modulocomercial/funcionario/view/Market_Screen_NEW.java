@@ -7,6 +7,11 @@ package br.com.modulocomercial.funcionario.view;
 
 import br.com.modulocomercial.infrastructure.service.FacadeInstance;
 import br.com.modulocomercial.produto.model.Produto;
+import br.com.modulocomercial.cliente.model.Cliente;
+import br.com.modulocomercial.funcionario.model.Funcionario;
+import br.com.modulocomercial.venda.model.Venda;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -18,21 +23,32 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Market_Screen_NEW extends javax.swing.JFrame {
   
-//carega todos os Produtos do banco de dados para verificar se não existem 2 logins iguais
-    List<Produto> produtos = FacadeInstance.getInstance().getAllProdutos();   
     
-//construtor de cliente
+    List<Produto> produtos = FacadeInstance.getInstance().getAllProdutos();   
+    List<Venda> vendas = FacadeInstance.getInstance().getAllVendas();
+    List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
+    
     Produto prod = new Produto();
+    
+   
     /**
      * Creates new form Market_Screen
      */
     public Market_Screen_NEW(){
+        String sNumber = String.valueOf(vendas.size()+1) ;
         initComponents();
         this.setLocationRelativeTo(null);
+        preencherTabela(produtos);
+        preencherCbxCliente(clientes);
+        preenchercbxProducts(produtos);
+        txtSaleNumber.setText(sNumber);
     }
 
     
-    
+    private void atualizacode(){
+        List<Produto> produtoz = FacadeInstance.getInstance().getAllProdutos();
+        txtCode.setText(String.valueOf(produtoz.size() + 1));
+    }
      //validaçoes()
     private boolean validaCampos(){
         
@@ -56,14 +72,41 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         return true;
     }
     
-    private void preencherTabela(List<Produto> itens){
-       
-        DefaultTableModel tabela = new DefaultTableModel();
-        this.jTable1.setModel(tabela);
-        for(Produto prod : itens)  
-        tabela.addRow(new Object[]{prod.getCod(),prod.getName(),prod.getQuantidade(),prod.getValue()});
-        System.out.println("ok");
+    private void preencherCbxCliente(List<Cliente> clientes) {
+        Collections.sort(clientes, (c1, c2) -> c1.getNome().compareToIgnoreCase(c2.getNome()));
+    
+        for (Cliente cliente : clientes) {
+         cbxClientName.addItem(cliente.getNome()); // Adiciona o nome do cliente ao combobox
+        }
     }
+    
+    private void preenchercbxProducts(List<Produto> produtos) {
+        Collections.sort(produtos, (c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+    
+        for (Produto produto : produtos) {
+            cbxProducts.addItem(produto.getName()); 
+        }
+    }
+    private void preencherTabela(List<Produto> itens) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Code");
+        modelo.addColumn("Product");
+        modelo.addColumn("Amount");
+        modelo.addColumn("Value");
+
+        for (Produto produto : itens) {
+            Object[] linha = new Object[4];
+            linha[0] = produto.getCod();
+            linha[1] = produto.getName();
+            linha[2] = produto.getQuantidade();
+            linha[3] = produto.getValue();
+            modelo.addRow(linha);
+        }
+
+        jTable1.setModel(modelo);
+    }
+   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,7 +129,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         txtValue = new javax.swing.JTextField();
         jLabelSearchMKS = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
-        jButtonSearchMKS = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         jScrollPanelTableMKS = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButtonReturnMKS = new javax.swing.JButton();
@@ -100,23 +143,23 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jLabelClientNameMKS = new javax.swing.JLabel();
         jLabelSaleNumberMKS = new javax.swing.JLabel();
         jLabelCodeProdMKS = new javax.swing.JLabel();
-        jComboBoxClientNameMKS = new javax.swing.JComboBox<>();
-        jComboBoxCodeProdMKS = new javax.swing.JComboBox<>();
+        cbxClientName = new javax.swing.JComboBox<>();
+        cbxProducts = new javax.swing.JComboBox<>();
         jLabelAmountMKS = new javax.swing.JLabel();
-        jTextFieldAmountMKS = new javax.swing.JTextField();
+        txtAmount = new javax.swing.JTextField();
         jButtonADDMKS = new javax.swing.JButton();
         jButtonReturnSaleMKS = new javax.swing.JButton();
         jButtonDeleteSaleMKS = new javax.swing.JButton();
         jButtonNewSaleMKS = new javax.swing.JButton();
         jButtonCloseSaleMKS = new javax.swing.JButton();
         jScrollPaneClientCodeMKS = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtClientCode = new javax.swing.JTextPane();
         jScrollPaneSaleNumberMKS = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        txtSaleNumber = new javax.swing.JTextPane();
         jScrollPaneCodeProdMKS = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        txtCodeProd = new javax.swing.JTextPane();
         jScrollPaneTableSaleMKS = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblVendas = new javax.swing.JTable();
         jLabelDiscountMKS = new javax.swing.JLabel();
         jTextFieldDiscountMKS = new javax.swing.JTextField();
         jLabelTotalValueMKS = new javax.swing.JLabel();
@@ -136,6 +179,11 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jTabbedPaneAbeMKS.setMaximumSize(new java.awt.Dimension(785, 540));
         jTabbedPaneAbeMKS.setMinimumSize(new java.awt.Dimension(785, 540));
         jTabbedPaneAbeMKS.setPreferredSize(new java.awt.Dimension(785, 540));
+        jTabbedPaneAbeMKS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneAbeMKSMouseClicked(evt);
+            }
+        });
 
         jPanelRegisProdMKS.setBackground(new java.awt.Color(244, 245, 241));
         jPanelRegisProdMKS.setMaximumSize(new java.awt.Dimension(785, 540));
@@ -146,6 +194,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jLabelCodeMKS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelCodeMKS.setText("CODE:");
 
+        txtCode.setEditable(false);
         txtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodeActionPerformed(evt);
@@ -155,6 +204,12 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jLabelProdMKS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jLabelProdMKS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelProdMKS.setText("PRODUCT:");
+
+        txtName.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtNameCaretUpdate(evt);
+            }
+        });
 
         jLabelStockMKS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jLabelStockMKS.setForeground(new java.awt.Color(15, 27, 54));
@@ -180,17 +235,16 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
             }
         });
 
-        jButtonSearchMKS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
-        jButtonSearchMKS.setForeground(new java.awt.Color(15, 27, 54));
-        jButtonSearchMKS.setText("SEARCH");
-        jButtonSearchMKS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonSearchMKS.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(15, 27, 54));
+        btnSearch.setText("SEARCH");
+        btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSearchMKSActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -286,7 +340,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonSearchMKS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelRegisProdMKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanelRegisProdMKSLayout.createSequentialGroup()
                                     .addComponent(jButtonReturnMKS)
@@ -324,7 +378,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                 .addGroup(jPanelRegisProdMKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSearchMKS)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearchMKS))
+                    .addComponent(btnSearch))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPanelTableMKS, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -334,7 +388,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                     .addComponent(jButtonModifyMKS)
                     .addComponent(jButtonDeleteMKS)
                     .addComponent(jButtonSaveMKS))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jTabbedPaneAbeMKS.addTab("REGISTER PRODUCTS", jPanelRegisProdMKS);
@@ -360,14 +414,24 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jLabelCodeProdMKS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelCodeProdMKS.setText("CODE PROD.");
 
-        jComboBoxClientNameMKS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxClientNameMKS.addActionListener(new java.awt.event.ActionListener() {
+        cbxClientName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  " }));
+        cbxClientName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cbxClientNameMouseExited(evt);
+            }
+        });
+        cbxClientName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxClientNameMKSActionPerformed(evt);
+                cbxClientNameActionPerformed(evt);
             }
         });
 
-        jComboBoxCodeProdMKS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxProducts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "   " }));
+        cbxProducts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cbxProductsMouseExited(evt);
+            }
+        });
 
         jLabelAmountMKS.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jLabelAmountMKS.setForeground(new java.awt.Color(15, 27, 54));
@@ -377,6 +441,11 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jButtonADDMKS.setForeground(new java.awt.Color(0, 102, 51));
         jButtonADDMKS.setText("ADD");
         jButtonADDMKS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonADDMKS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonADDMKSActionPerformed(evt);
+            }
+        });
 
         jButtonReturnSaleMKS.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         jButtonReturnSaleMKS.setForeground(new java.awt.Color(15, 27, 54));
@@ -408,13 +477,20 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
             }
         });
 
-        jScrollPaneClientCodeMKS.setViewportView(jTextPane1);
+        txtClientCode.setEditable(false);
+        jScrollPaneClientCodeMKS.setViewportView(txtClientCode);
 
-        jScrollPaneSaleNumberMKS.setViewportView(jTextPane2);
+        txtSaleNumber.setEditable(false);
+        jScrollPaneSaleNumberMKS.setViewportView(txtSaleNumber);
 
-        jScrollPaneCodeProdMKS.setViewportView(jTextPane3);
+        txtCodeProd.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtCodeProdCaretUpdate(evt);
+            }
+        });
+        jScrollPaneCodeProdMKS.setViewportView(txtCodeProd);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -437,26 +513,30 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable2.setRowHeight(25);
-        jTable2.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jTable2.setShowGrid(true);
-        jScrollPaneTableSaleMKS.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setResizable(false);
-            jTable2.getColumnModel().getColumn(1).setResizable(false);
-            jTable2.getColumnModel().getColumn(2).setResizable(false);
-            jTable2.getColumnModel().getColumn(3).setResizable(false);
-            jTable2.getColumnModel().getColumn(4).setResizable(false);
+        tblVendas.setGridColor(new java.awt.Color(0, 0, 0));
+        tblVendas.setRowHeight(25);
+        tblVendas.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        tblVendas.setShowGrid(true);
+        jScrollPaneTableSaleMKS.setViewportView(tblVendas);
+        if (tblVendas.getColumnModel().getColumnCount() > 0) {
+            tblVendas.getColumnModel().getColumn(0).setResizable(false);
+            tblVendas.getColumnModel().getColumn(1).setResizable(false);
+            tblVendas.getColumnModel().getColumn(2).setResizable(false);
+            tblVendas.getColumnModel().getColumn(3).setResizable(false);
+            tblVendas.getColumnModel().getColumn(4).setResizable(false);
         }
 
         jLabelDiscountMKS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jLabelDiscountMKS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelDiscountMKS.setText("DISCOUNT:");
 
+        jTextFieldDiscountMKS.setEditable(false);
+
         jLabelTotalValueMKS.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jLabelTotalValueMKS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelTotalValueMKS.setText("TOTAL VALUE:");
+
+        jTextFieldTotalValueMKS.setEditable(false);
 
         javax.swing.GroupLayout jPanelSale2MKSLayout = new javax.swing.GroupLayout(jPanelSale2MKS);
         jPanelSale2MKS.setLayout(jPanelSale2MKSLayout);
@@ -476,17 +556,17 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelSale2MKSLayout.createSequentialGroup()
-                                        .addComponent(jComboBoxCodeProdMKS, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbxProducts, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabelAmountMKS)
                                             .addGroup(jPanelSale2MKSLayout.createSequentialGroup()
-                                                .addComponent(jTextFieldAmountMKS, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(jButtonADDMKS, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanelSale2MKSLayout.createSequentialGroup()
                                         .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBoxClientNameMKS, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxClientName, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabelClientNameMKS))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,7 +603,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                 .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPaneClientCodeMKS)
-                        .addComponent(jComboBoxClientNameMKS))
+                        .addComponent(cbxClientName))
                     .addComponent(jScrollPaneSaleNumberMKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,8 +613,8 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                 .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPaneCodeProdMKS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelSale2MKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBoxCodeProdMKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldAmountMKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbxProducts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonADDMKS)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPaneTableSaleMKS, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -608,9 +688,9 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonReturnMKSActionPerformed
 
-    private void jComboBoxClientNameMKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClientNameMKSActionPerformed
+    private void cbxClientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxClientNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxClientNameMKSActionPerformed
+    }//GEN-LAST:event_cbxClientNameActionPerformed
 
     private void jButtonReturnSaleMKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnSaleMKSActionPerformed
         ProfileFunc_Screen_NEW rgf = new ProfileFunc_Screen_NEW();
@@ -636,15 +716,16 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         int codigo = Integer.parseInt(txtCode.getText());
         float valor= Float.parseFloat(txtValue.getText());
        if(validaCampos() == true){
-            prod.setName(txtName.getText());
-            prod.setQuantidade(quantia);
-            prod.setCod(codigo);
-            prod.setValue(valor);
+           Produto produ = new Produto();
+            produ.setName(txtName.getText());
+            produ.setQuantidade(quantia);
+            produ.setCod(codigo);
+            produ.setValue(valor);
   
         //salva o produto
-            prod = FacadeInstance.getInstance().saveProduto(prod);
-            if (prod != null) {
-                this.produtos.add(prod);
+            produ = FacadeInstance.getInstance().saveProduto(produ);
+            if (produ != null) {
+                this.produtos.add(produ);
                 this.produtos = FacadeInstance.getInstance().getAllProdutos();
                 JOptionPane.showMessageDialog(null, "Product save successfully");
             } else {
@@ -655,14 +736,77 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
             txtStock.setText("");
             txtCode.setText("");
             txtValue.setText("");
+        //reseta a tabela    
+            preencherTabela(produtos);
        } 
+       
     }//GEN-LAST:event_jButtonSaveMKSActionPerformed
 
-    private void jButtonSearchMKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchMKSActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        List<Produto> produtos = FacadeInstance.getInstance().findByNameProduto(txtSearch.getText());
-        preencherTabela(produtos);
-    }//GEN-LAST:event_jButtonSearchMKSActionPerformed
+        List<Produto> produt = FacadeInstance.getInstance().getAllProdutos();
+        List<Produto> result = new ArrayList<>();       
+        for(int i = 0; i < produt.size();i++){
+            if(produt.get(i).getName().toLowerCase().contains(txtSearch.getText().toLowerCase())){
+                result.add(produt.get(i));
+            }
+        }
+        if(result.isEmpty()){
+            JOptionPane.showMessageDialog(null,"No products with that name, try again");
+        }else{
+            preencherTabela(result);
+            JOptionPane.showMessageDialog(null,"Do a clean search to reset the table");
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void cbxClientNameMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxClientNameMouseExited
+        // TODO add your handling code here:
+        String noume = (String) cbxClientName.getSelectedItem();
+        for(int i =0; i< clientes.size();i++){
+            if(clientes.get(i).getNome().equals(noume)){
+                txtClientCode.setText(String.valueOf(clientes.get(i).getId()));
+            }
+        }
+    }//GEN-LAST:event_cbxClientNameMouseExited
+
+    private void cbxProductsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxProductsMouseExited
+        // TODO add your handling code here:
+        String noume = (String) cbxProducts.getSelectedItem();
+        for(int i =0; i< produtos.size();i++){
+            if(produtos.get(i).getName().equals(noume)){
+                txtCodeProd.setText(String.valueOf(produtos.get(i).getId()));
+            }
+        }
+    }//GEN-LAST:event_cbxProductsMouseExited
+
+    private void txtCodeProdCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtCodeProdCaretUpdate
+        // TODO add your handling code here:
+        if(!txtCodeProd.getText().equals("")){
+    
+            long iden = Long.parseLong(txtCodeProd.getText());
+            for(int i =0; i< produtos.size();i++){
+                if(produtos.get(i).getId().equals(iden)){
+                    cbxProducts.setSelectedItem(produtos.get(i).getName());
+                }
+            }
+        }
+    }//GEN-LAST:event_txtCodeProdCaretUpdate
+
+    private void txtNameCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtNameCaretUpdate
+        // TODO add your handling code here:
+        if(!txtName.getText().equals("")){
+            atualizacode();
+        }
+    }//GEN-LAST:event_txtNameCaretUpdate
+
+    private void jTabbedPaneAbeMKSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneAbeMKSMouseClicked
+        // TODO add your handling code here:
+        preenchercbxProducts(produtos);
+    }//GEN-LAST:event_jTabbedPaneAbeMKSMouseClicked
+
+    private void jButtonADDMKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonADDMKSActionPerformed
+  
+    }//GEN-LAST:event_jButtonADDMKSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -706,6 +850,9 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cbxClientName;
+    private javax.swing.JComboBox<String> cbxProducts;
     private javax.swing.JButton jButtonADDMKS;
     private javax.swing.JButton jButtonCloseSaleMKS;
     private javax.swing.JButton jButtonDeleteMKS;
@@ -716,9 +863,6 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReturnMKS;
     private javax.swing.JButton jButtonReturnSaleMKS;
     private javax.swing.JButton jButtonSaveMKS;
-    private javax.swing.JButton jButtonSearchMKS;
-    private javax.swing.JComboBox<String> jComboBoxClientNameMKS;
-    private javax.swing.JComboBox<String> jComboBoxCodeProdMKS;
     private javax.swing.JLabel jLabelAmountMKS;
     private javax.swing.JLabel jLabelClientCodeMKS;
     private javax.swing.JLabel jLabelClientNameMKS;
@@ -742,15 +886,15 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPanelTableMKS;
     private javax.swing.JTabbedPane jTabbedPaneAbeMKS;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextFieldAmountMKS;
     private javax.swing.JTextField jTextFieldDiscountMKS;
     private javax.swing.JTextField jTextFieldTotalValueMKS;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
+    private javax.swing.JTable tblVendas;
+    private javax.swing.JTextField txtAmount;
+    private javax.swing.JTextPane txtClientCode;
     private javax.swing.JTextField txtCode;
+    private javax.swing.JTextPane txtCodeProd;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextPane txtSaleNumber;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtValue;

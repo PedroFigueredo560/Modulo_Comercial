@@ -21,6 +21,7 @@ public class Cliente extends PersistenceEntity implements Serializable{
     private String username;
     private String login;
     private String senha;
+    private int pontos;
 
     //getterres e setterres
     public String getEmail() {
@@ -61,6 +62,14 @@ public class Cliente extends PersistenceEntity implements Serializable{
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
     }
 
 }

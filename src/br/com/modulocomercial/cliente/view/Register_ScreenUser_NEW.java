@@ -323,7 +323,7 @@ public class Register_ScreenUser_NEW extends javax.swing.JFrame {
             user.setUserName(txtUsername.getText());
             user.setLogin(validaUsuario());
         //mostra o login do cliente
-            JOptionPane.showMessageDialog(null,"O login do funcionario é:" + usuario);   
+            JOptionPane.showMessageDialog(null,"O login do usuario é:" + usuario);   
         //salva o usuario
             user = FacadeInstance.getInstance().saveCliente(user);
             if (user != null) {

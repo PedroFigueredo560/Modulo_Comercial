@@ -12,6 +12,9 @@ import br.com.modulocomercial.funcionario.model.Funcionario;
 import br.com.modulocomercial.produto.model.Produto;
 import br.com.modulocomercial.produto.service.IServiceProduto;
 import br.com.modulocomercial.produto.service.ServiceProduto;
+import br.com.modulocomercial.venda.model.Venda;
+import br.com.modulocomercial.venda.service.IServiceVenda;
+import br.com.modulocomercial.venda.service.ServiceVenda;
 import java.util.List;
 
 /**
@@ -103,5 +106,38 @@ public class Facade implements IFacade {
     @Override
     public List<Produto> findByNameProduto(String name) {
         return serviceProduto.findByNameProduto(name);
+    }
+    
+    //////Venda
+    private final IServiceVenda serviceVenda = new ServiceVenda();
+
+    @Override
+    public Venda saveVenda(Venda venda) {
+        return serviceVenda.saveVenda(venda);
+    }
+
+    @Override
+    public Venda updateVenda(Venda venda) {
+        return serviceVenda.updateVenda(venda);
+    }
+
+    @Override
+    public void deleteVenda(Venda produto) {
+        this.serviceVenda.deleteVenda(produto);
+    }
+
+    @Override
+    public List<Venda> getAllVendas() {
+        return serviceVenda.getAllVendas();
+    }
+
+    @Override
+    public List<Venda> findByNameVenda(String name) {
+        return serviceVenda.findByNameVenda(name);
+    }
+    
+    @Override
+    public List<Venda> findByClienteVenda(int idCliente){
+        return serviceVenda.findByClienteVenda(idCliente);
     }
 }

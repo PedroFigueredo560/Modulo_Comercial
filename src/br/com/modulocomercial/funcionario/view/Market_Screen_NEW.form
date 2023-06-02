@@ -83,6 +83,9 @@
               <Dimension value="[785, 540]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPaneAbeMKSMouseClicked"/>
+          </Events>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
@@ -138,7 +141,7 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="txtSearch" min="-2" pref="450" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButtonSearchMKS" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="btnSearch" min="-2" pref="100" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
@@ -188,7 +191,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabelSearchMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButtonSearchMKS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPanelTableMKS" min="-2" pref="203" max="-2" attributes="0"/>
@@ -200,7 +203,7 @@
                               <Component id="jButtonDeleteMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonSaveMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="113" max="32767" attributes="0"/>
+                          <EmptySpace pref="111" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -218,6 +221,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCode">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodeActionPerformed"/>
                   </Events>
@@ -234,6 +240,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtName">
+                  <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtNameCaretUpdate"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelStockMKS">
                   <Properties>
@@ -280,7 +289,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonSearchMKS">
+                <Component class="javax.swing.JButton" name="btnSearch">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Impact" size="16" style="0"/>
@@ -294,7 +303,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSearchMKSActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPanelTableMKS">
@@ -306,9 +315,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="jTable1">
                       <Properties>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="7">
                             <Column editable="false" title="CODE" type="java.lang.Object"/>
@@ -490,12 +496,12 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jComboBoxCodeProdMKS" min="-2" pref="375" max="-2" attributes="0"/>
+                                                      <Component id="cbxProducts" min="-2" pref="375" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jLabelAmountMKS" min="-2" max="-2" attributes="0"/>
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="jTextFieldAmountMKS" min="-2" pref="135" max="-2" attributes="0"/>
+                                                              <Component id="txtAmount" min="-2" pref="135" max="-2" attributes="0"/>
                                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                               <Component id="jButtonADDMKS" min="-2" pref="98" max="-2" attributes="0"/>
                                                           </Group>
@@ -503,7 +509,7 @@
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jComboBoxClientNameMKS" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
+                                                          <Component id="cbxClientName" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
                                                           <Component id="jLabelClientNameMKS" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -552,7 +558,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jScrollPaneClientCodeMKS" max="32767" attributes="0"/>
-                                      <Component id="jComboBoxClientNameMKS" max="32767" attributes="0"/>
+                                      <Component id="cbxClientName" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPaneSaleNumberMKS" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -565,8 +571,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPaneCodeProdMKS" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jComboBoxCodeProdMKS" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldAmountMKS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxProducts" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtAmount" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButtonADDMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -633,35 +639,33 @@
                         <Property name="text" type="java.lang.String" value="CODE PROD."/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBoxClientNameMKS">
+                    <Component class="javax.swing.JComboBox" name="cbxClientName">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="1">
+                            <StringItem index="0" value="  "/>
                           </StringArray>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxClientNameMKSActionPerformed"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbxClientNameMouseExited"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxClientNameActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBoxCodeProdMKS">
+                    <Component class="javax.swing.JComboBox" name="cbxProducts">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
+                          <StringArray count="1">
+                            <StringItem index="0" value="   "/>
                           </StringArray>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbxProductsMouseExited"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
@@ -677,7 +681,7 @@
                         <Property name="text" type="java.lang.String" value="AMOUNT:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextFieldAmountMKS">
+                    <Component class="javax.swing.JTextField" name="txtAmount">
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonADDMKS">
                       <Properties>
@@ -692,6 +696,9 @@
                           <Color id="Hand Cursor"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonADDMKSActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButtonReturnSaleMKS">
                       <Properties>
@@ -762,7 +769,10 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jTextPane1">
+                        <Component class="javax.swing.JTextPane" name="txtClientCode">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -773,7 +783,10 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jTextPane2">
+                        <Component class="javax.swing.JTextPane" name="txtSaleNumber">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -784,7 +797,10 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextPane" name="jTextPane3">
+                        <Component class="javax.swing.JTextPane" name="txtCodeProd">
+                          <Events>
+                            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtCodeProdCaretUpdate"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -795,7 +811,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable2">
+                        <Component class="javax.swing.JTable" name="tblVendas">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="5" rowCount="8">
@@ -862,6 +878,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextFieldDiscountMKS">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabelTotalValueMKS">
                       <Properties>
@@ -875,6 +894,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextFieldTotalValueMKS">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>

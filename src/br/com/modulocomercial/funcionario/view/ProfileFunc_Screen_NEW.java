@@ -55,7 +55,6 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 548));
         getContentPane().setLayout(null);
 
-        jButtonSellEP5.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSellEP5.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonSellEP5.setForeground(new java.awt.Color(0, 102, 51));
         jButtonSellEP5.setText("SELL");
@@ -69,7 +68,6 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jButtonSellEP5);
         jButtonSellEP5.setBounds(630, 460, 120, 30);
 
-        jButtonSellEP4.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSellEP4.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonSellEP4.setForeground(new java.awt.Color(0, 102, 51));
         jButtonSellEP4.setText("SELL");
@@ -83,7 +81,6 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jButtonSellEP4);
         jButtonSellEP4.setBounds(630, 430, 120, 30);
 
-        jButtonSellEP3.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSellEP3.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonSellEP3.setForeground(new java.awt.Color(0, 102, 51));
         jButtonSellEP3.setText("SELL");
@@ -97,7 +94,6 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jButtonSellEP3);
         jButtonSellEP3.setBounds(630, 400, 120, 30);
 
-        jButtonSellEP2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSellEP2.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonSellEP2.setForeground(new java.awt.Color(0, 102, 51));
         jButtonSellEP2.setText("SELL");
@@ -111,7 +107,6 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jButtonSellEP2);
         jButtonSellEP2.setBounds(630, 370, 120, 30);
 
-        jButtonSellEP.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSellEP.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonSellEP.setForeground(new java.awt.Color(0, 102, 51));
         jButtonSellEP.setText("SELL");
@@ -125,9 +120,7 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jButtonSellEP);
         jButtonSellEP.setBounds(630, 340, 120, 30);
 
-        jTableFuncFuncEP.setBackground(new java.awt.Color(255, 255, 255));
         jTableFuncFuncEP.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        jTableFuncFuncEP.setForeground(new java.awt.Color(0, 0, 0));
         jTableFuncFuncEP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -157,9 +150,7 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jScrollPaneFFEP);
         jScrollPaneFFEP.setBounds(30, 80, 220, 210);
 
-        jTableClientInfoEP.setBackground(new java.awt.Color(255, 255, 255));
         jTableClientInfoEP.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        jTableClientInfoEP.setForeground(new java.awt.Color(0, 0, 0));
         jTableClientInfoEP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -204,8 +195,6 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jScrollPaneClientsEP);
         jScrollPaneClientsEP.setBounds(262, 80, 490, 210);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -274,11 +263,9 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
 
         jLabelNameEP.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNameEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelNameEP.setForeground(new java.awt.Color(0, 0, 0));
         jLabelNameEP.setText("NAME EMPLOYEE HERE");
         jLabelNameEP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(15, 27, 54));
         jButton1.setText("REGISTER PRODUCTS");
@@ -289,7 +276,6 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
             }
         });
 
-        ReturnButtonEP.setBackground(new java.awt.Color(255, 255, 255));
         ReturnButtonEP.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         ReturnButtonEP.setForeground(new java.awt.Color(204, 0, 0));
         ReturnButtonEP.setText("RETURN");
@@ -311,6 +297,7 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelCodeEP, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(jLabelCodeEmployeeNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelNameEP, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(551, Short.MAX_VALUE))
