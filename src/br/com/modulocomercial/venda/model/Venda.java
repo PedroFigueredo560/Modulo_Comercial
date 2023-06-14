@@ -26,10 +26,27 @@ public class Venda extends PersistenceEntity implements Serializable{
     private float valorUnitario;
     private float total;
     private int idCliente;
+    private int codVenda;
+    private boolean pago;
+    
+    public boolean isPago() {
+        return pago;
+    }
+
+    //getterres e setterres ;
+    public void setPago(boolean pago) {    
+        this.pago = pago;
+    }
+
+    public int getCodVenda() {
+        return codVenda;
+    }
+
+    public void setCodVenda(int codVenda) {
+        this.codVenda = codVenda;
+    }
 
    
-    
-    //getterres e setterres ;
     public String getNomeProduto() {
         return nomeProduto;
     }

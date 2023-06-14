@@ -33,7 +33,6 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
      //validaçoes()
     private boolean validaCampos(){
         String senha = cli.getSenha();
-         JOptionPane.showMessageDialog(null,"nome"+cli.getNome()+"\nsenha"+cli.getSenha());
         if(!txtName.getText().equals("")){
             cli.setNome(txtName.getText());
         }          
@@ -268,7 +267,7 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
         //edita o cliente
             cli = FacadeInstance.getInstance().updateCliente(cli);
             if (cli != null) {
-                JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso");
+                JOptionPane.showMessageDialog(null, "Client changed successfully");
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar o Cliente");
             }
@@ -277,6 +276,13 @@ public class EditProfile_Screen_NEW extends javax.swing.JFrame {
             txtEmail.setText("");
             txtLastPassword.setText("");
             txtNewPassword.setText("");
+            
+        Profile_Screen_NEW rgf = new Profile_Screen_NEW();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
         }
     }//GEN-LAST:event_jButtonConfirmedEPSActionPerformed
 

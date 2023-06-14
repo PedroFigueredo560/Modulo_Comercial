@@ -48,8 +48,6 @@ public class ServiceProduto implements IServiceProduto{
     public Produto updateProduto(Produto produto) {
         if(produto == null){
             throw new BusinessException(PRODUTO_NULL);
-        } else if(daoProduto.findById(produto.getId()) == null){
-            throw new BusinessException(PRODUTO_EXISTE);
         } else{
             return daoProduto.update(produto);
         }

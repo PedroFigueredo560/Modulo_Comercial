@@ -536,9 +536,9 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabelTotalValueMKS" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTotalValueMKS" max="32767" attributes="0"/>
+                                      <Component id="txtValorTotal" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButtonCloseSaleMKS" min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="jButtonCloseSale" min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="23" max="32767" attributes="0"/>
@@ -582,12 +582,12 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jButtonDeleteSaleMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButtonNewSaleMKS" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonCloseSaleMKS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonCloseSale" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButtonReturnSaleMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelDiscountMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTextFieldDiscountMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelTotalValueMKS" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTotalValueMKS" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtValorTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="48" max="32767" attributes="0"/>
                           </Group>
@@ -648,7 +648,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbxClientNameMouseExited"/>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbxClientNameItemStateChanged"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxClientNameActionPerformed"/>
                       </Events>
                       <AuxValues>
@@ -664,7 +664,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbxProductsMouseExited"/>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbxProductsItemStateChanged"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -745,7 +745,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButtonCloseSaleMKS">
+                    <Component class="javax.swing.JButton" name="jButtonCloseSale">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Impact" size="18" style="0"/>
@@ -759,7 +759,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCloseSaleMKSActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCloseSaleActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPaneClientCodeMKS">
@@ -893,7 +893,7 @@
                         <Property name="text" type="java.lang.String" value="TOTAL VALUE:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextFieldTotalValueMKS">
+                    <Component class="javax.swing.JTextField" name="txtValorTotal">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                       </Properties>

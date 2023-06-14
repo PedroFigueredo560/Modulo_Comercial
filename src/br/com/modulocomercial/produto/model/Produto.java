@@ -24,7 +24,6 @@ public class Produto extends PersistenceEntity implements Serializable{
     private float value;
     private int quantidade;
     
-  
     //getterres e setterres 
 
     public String getName() {

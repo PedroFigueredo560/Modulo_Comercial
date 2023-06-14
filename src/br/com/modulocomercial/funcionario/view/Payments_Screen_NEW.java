@@ -4,9 +4,12 @@
  */
 package br.com.modulocomercial.funcionario.view;
 
+import br.com.modulocomercial.cliente.model.Cliente;
+import br.com.modulocomercial.venda.model.Venda;
 import br.com.modulocomercial.funcionario.model.Funcionario;
 import br.com.modulocomercial.infrastructure.service.FacadeInstance;
 import java.util.List;
+import java.util.Objects;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -15,23 +18,27 @@ import javax.swing.JOptionPane;
  * @author joanb
  */
 public class Payments_Screen_NEW extends javax.swing.JFrame {
-
+    List<Venda> prodVendidos = Market_Screen_NEW.vendidos;
+    Cliente cli = Market_Screen_NEW.cliente;
     /**
      * Creates new form Payments_Screen
      */
     public Payments_Screen_NEW() {
         initComponents();
         this.setLocationRelativeTo(null);
+        calculapreco();
     }
     
-    
+private void calculapreco(){
+    Float preco = 0f;
+    for(int i=0;i<prodVendidos.size();i++){
+        preco += prodVendidos.get(i).getTotal();
+    }
+    txtValue.setText(String.valueOf(preco));
+
+}
 private boolean validaCampos(){
-        List <Funcionario> employee  = FacadeInstance.getInstance().getAllFuncionarios();
-        
-        if(txtValue.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"The field Value cannot be blank");
-            return false;
-        }
+        List <Funcionario> employee  = FacadeInstance.getInstance().getAllFuncionarios();    
         
         if(txtEmployeeCpf.getText().equals("")){
             JOptionPane.showMessageDialog(null,"The field Employee Code cannot be blank");
@@ -45,6 +52,7 @@ private boolean validaCampos(){
         JOptionPane.showMessageDialog(null,"Error, invalid employee cpf!"); 
         return false;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,9 +116,9 @@ private boolean validaCampos(){
         jLabelDiscountPYS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelDiscountPYS.setText("DISCOUNT %:");
 
-        txtDiscount.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDiscountFocusLost(evt);
+        txtDiscount.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtDiscountCaretUpdate(evt);
             }
         });
 
@@ -144,6 +152,7 @@ private boolean validaCampos(){
             }
         });
 
+        txtValue.setEditable(false);
         txtValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValueActionPerformed(evt);
@@ -248,17 +257,33 @@ private boolean validaCampos(){
         JOptionPane.showMessageDialog(null,"Pay method: "+cbxPayMetod.getSelectedItem()+"\nValue = "+value+"\nDiscount = "+discount+"% \nTotal Value = "+totalValue);
         
         
-        
+        Market_Screen_NEW rgf = new Market_Screen_NEW();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose(); 
         }
     }//GEN-LAST:event_jButtonPrintNotePYSActionPerformed
 
-    private void txtDiscountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiscountFocusLost
+    private void txtDiscountCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtDiscountCaretUpdate
         // TODO add your handling code here:
-        float value = Float.parseFloat(txtValue.getText());
-        float discount = Float.parseFloat(txtDiscount.getText());
-        float totalValue = value * (1-(discount/100));
-        txtTotalValue.setText(String.valueOf(totalValue));
-    }//GEN-LAST:event_txtDiscountFocusLost
+        List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
+        for(int i=0;i<clientes.size();i++){
+            if(Objects.equals(clientes.get(i).getId(), cli.getId())){
+            cli.setPontos(clientes.get(i).getPontos());
+            }
+        }
+        if(cli.getPontos() >= Integer.parseInt(txtDiscount.getText())){
+            float value = Float.parseFloat(txtValue.getText());
+            float discount = Float.parseFloat(txtDiscount.getText());
+            float totalValue = value * (1-(discount/100));
+            txtTotalValue.setText(String.valueOf(totalValue));
+        }else{
+            JOptionPane.showMessageDialog(null,"insuficient points, this client has: "+cli.getPontos()+"point(s)");
+            txtDiscount.setText("");
+         }
+    }//GEN-LAST:event_txtDiscountCaretUpdate
 
     /**
      * @param args the command line arguments
