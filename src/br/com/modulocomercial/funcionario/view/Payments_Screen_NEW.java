@@ -8,6 +8,7 @@ import br.com.modulocomercial.cliente.model.Cliente;
 import br.com.modulocomercial.venda.model.Venda;
 import br.com.modulocomercial.funcionario.model.Funcionario;
 import br.com.modulocomercial.infrastructure.service.FacadeInstance;
+import br.com.modulocomercial.produto.model.Produto;
 import java.util.List;
 import java.util.Objects;
 import javax.swing.JFrame;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class Payments_Screen_NEW extends javax.swing.JFrame {
     List<Venda> prodVendidos = Market_Screen_NEW.vendidos;
+    List<Produto> produtos = FacadeInstance.getInstance().getAllProdutos();  
     Cliente cli = Market_Screen_NEW.cliente;
     /**
      * Creates new form Payments_Screen
@@ -27,16 +29,31 @@ public class Payments_Screen_NEW extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         calculapreco();
-    }
+        cbxPayMetod.removeAllItems();
+        if(cli.getId().equals(0l)){
+            cbxPayMetod.addItem("IN CASH");
+            cbxPayMetod.addItem("CREDIT CARD");
+            cbxPayMetod.addItem("DEBIT CARD");
+            }
+        else {
+            cbxPayMetod.addItem("IN CASH");
+            cbxPayMetod.addItem("CREDIT CARD");
+            cbxPayMetod.addItem("DEBIT CARD");
+            cbxPayMetod.addItem("NOTE (FOR 30 DAYS)");
+            cbxPayMetod.addItem("NOTE (FOR 60 DAYS)");
+        }
+    } 
     
 private void calculapreco(){
     Float preco = 0f;
+    
     for(int i=0;i<prodVendidos.size();i++){
         preco += prodVendidos.get(i).getTotal();
     }
     txtValue.setText(String.valueOf(preco));
-
+    txtDiscount.setText("0");
 }
+
 private boolean validaCampos(){
         List <Funcionario> employee  = FacadeInstance.getInstance().getAllFuncionarios();    
         
@@ -256,7 +273,26 @@ private boolean validaCampos(){
         float totalValue = value * (1-(discount/100));
         JOptionPane.showMessageDialog(null,"Pay method: "+cbxPayMetod.getSelectedItem()+"\nValue = "+value+"\nDiscount = "+discount+"% \nTotal Value = "+totalValue);
         
+        if(cbxPayMetod.getSelectedItem().equals("NOTE (FOR 30 DAYS)") || cbxPayMetod.getSelectedItem().equals("NOTE (FOR 60 DAYS)") ){
+            for(int i=0; i < prodVendidos.size();i++){
+                prodVendidos.get(i).setPago(false);
+                prodVendidos.get(i).setCpf(txtEmployeeCpf.getText());
+                FacadeInstance.getInstance().saveVenda(prodVendidos.get(i));
+                
+            }
+        } else{
+            for(int i=0; i < prodVendidos.size();i++){
+                prodVendidos.get(i).setPago(true);
+                prodVendidos.get(i).setCpf(txtEmployeeCpf.getText());
+                FacadeInstance.getInstance().saveVenda(prodVendidos.get(i));
+                for(int j=0; j < produtos.size(); j++){
+                    if(produtos.get(j).getCod() == prodVendidos.get(i).getCodProduto())
+                        produtos.get(j).setQuantidade(produtos.get(j).getQuantidade() - prodVendidos.get(i).getQuantidade());
+                }
+            }
+        }
         
+       
         Market_Screen_NEW rgf = new Market_Screen_NEW();
         rgf.setVisible(true);
         rgf.pack();

@@ -27,7 +27,16 @@ public class Venda extends PersistenceEntity implements Serializable{
     private float total;
     private int idCliente;
     private int codVenda;
+    private String cpfFunc;
     private boolean pago;
+
+    public String getCpf() {
+        return cpfFunc;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpfFunc = cpf;
+    }
     
     public boolean isPago() {
         return pago;

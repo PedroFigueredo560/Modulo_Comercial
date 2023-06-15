@@ -733,6 +733,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
 
     private void jButtonCloseSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseSaleActionPerformed
         List<Venda> vend = FacadeInstance.getInstance().getAllVendas();
+        vendidos.clear();
         
         if(cbxClientName.getSelectedIndex()== 0x0){
             cliente.setId(0L);
@@ -774,10 +775,9 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         vendido.setQuantidade(produtosvenda.get(i).getQuantidade());
         vendido.setValorUnitario(produtosvenda.get(i).getValue());
         vendido.setTotal(produtosvenda.get(i).getValue() * vendido.getQuantidade());
-        FacadeInstance.getInstance().saveVenda(vendido);
         vendidos.add(vendido);
 
-        produto.setQuantidade(produto.getQuantidade() - vendido.getQuantidade());
+        
         FacadeInstance.getInstance().updateProduto(produto);
     }
     }
