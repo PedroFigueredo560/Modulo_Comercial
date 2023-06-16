@@ -101,16 +101,26 @@ private List<Produto> obterProdutosAleatorios(List<Produto> itens, int quantidad
         modelo.addColumn("Client Code");
         modelo.addColumn("Client");
         modelo.addColumn("Debts");
-
+        float total = 0f;
         for (int i=0; i< cliente.size();i++ ) {
             Object[] linha = new Object[3];
             linha[0] = cliente.get(i).getId();
             linha[1] = cliente.get(i).getNome();
-            linha[2] = "NO";
+            for(int j=0;j<vendas.size();j++){
+                total = 0f;
+                if(vendas.get(j).getIdCliente() == cliente.get(i).getId()){
+                    if(vendas.get(j).isPago() == true){
+                        total+=vendas.get(j).getTotal();
+                        linha[2] = String.valueOf(total);
+                    }
+                } else if(total == 0f){
+                        linha[2] = "NO";
+                }
+            }
             modelo.addRow(linha);
         }
 
-        tblFuncão.setModel(modelo);
+        tblClientInfo.setModel(modelo);
     }
     /**
      * This method is called from within the constructor to initialize the form.
