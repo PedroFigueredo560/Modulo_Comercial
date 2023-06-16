@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class Market_Screen_NEW extends javax.swing.JFrame {
   
     static List<Venda> vendidos = new ArrayList<>();
-    static Cliente cliente = new Cliente();
+    static Cliente user= new Cliente();
     List<Produto> produtos = FacadeInstance.getInstance().getAllProdutos();   
     List<Venda> vendas = FacadeInstance.getInstance().getAllVendas();
     List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
@@ -45,12 +45,6 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         preencherCbxCliente(clientes);
         preenchercbxProducts(produtos);
         txtSaleNumber.setText(sNumber);
-        cliente.setEmail("0@gmail");
-        cliente.setLogin("0CLI0");
-        cliente.setNome("0");
-        cliente.setPontos(0);
-        cliente.setSenha("00000");
-        cliente.setUserName("0");
     }
 
     
@@ -90,12 +84,16 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
     }
     
     private void preenchercbxProducts(List<Produto> produtos) {
+        cbxProducts.removeAllItems();
+        
         Collections.sort(produtos, (c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
-    
-        for (Produto produto : produtos) {
-            cbxProducts.addItem(produto.getName()); 
+        cbxProducts.addItem(""); 
+        for (int i=0; i<produtos.size(); i++) {
+            cbxProducts.addItem(produtos.get(i).getName()); 
         }
     }
+    
+
     private void preencherTabela(List<Produto> itens) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Code");
@@ -736,9 +734,9 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         vendidos.clear();
         
         if(cbxClientName.getSelectedIndex()== 0x0){
-            cliente.setId(0L);
+            user.setId(0L);
         }else{
-            cliente.setId(Long.valueOf(txtClientCode.getText()));
+            user.setId(Long.valueOf(txtClientCode.getText()));
         }
         String noume = (String) cbxClientName.getSelectedItem();
         
@@ -861,8 +859,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameCaretUpdate
 
     private void jTabbedPaneAbeMKSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneAbeMKSMouseClicked
-        // TODO add your handling code here:
-        preenchercbxProducts(produtos);
+
     }//GEN-LAST:event_jTabbedPaneAbeMKSMouseClicked
 
     private void jButtonADDMKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonADDMKSActionPerformed
@@ -922,13 +919,17 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
 
     private void cbxProductsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProductsItemStateChanged
     // TODO add your handling code here:
-    String noume = (String) cbxProducts.getSelectedItem();
-    for (Produto produto : produtos) {
-        if (produto.getName().equals(noume)) {
-            txtCodeProd.setText(String.valueOf(produto.getId()));
-            
+        String noume = (String) cbxProducts.getSelectedItem();
+        if(cbxProducts.getSelectedIndex()== 0x0)
+            txtCodeProd.setText("");
+        else{
+            for (Produto produto : produtos) {
+                if (produto.getName().equals(noume)) {
+                    txtCodeProd.setText(String.valueOf(produto.getId()));
+
+                }
+            }
         }
-    }
     }//GEN-LAST:event_cbxProductsItemStateChanged
 
     /**

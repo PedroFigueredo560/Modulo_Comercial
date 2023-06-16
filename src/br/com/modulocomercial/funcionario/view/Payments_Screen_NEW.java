@@ -9,19 +9,22 @@ import br.com.modulocomercial.venda.model.Venda;
 import br.com.modulocomercial.funcionario.model.Funcionario;
 import br.com.modulocomercial.infrastructure.service.FacadeInstance;
 import br.com.modulocomercial.produto.model.Produto;
+import static java.lang.Math.round;
 import java.util.List;
 import java.util.Objects;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author joanb
  */
 public class Payments_Screen_NEW extends javax.swing.JFrame {
+    List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
     List<Venda> prodVendidos = Market_Screen_NEW.vendidos;
     List<Produto> produtos = FacadeInstance.getInstance().getAllProdutos();  
-    Cliente cli = Market_Screen_NEW.cliente;
+    Cliente cli = Market_Screen_NEW.user;
     /**
      * Creates new form Payments_Screen
      */
@@ -57,6 +60,9 @@ private void calculapreco(){
 private boolean validaCampos(){
         List <Funcionario> employee  = FacadeInstance.getInstance().getAllFuncionarios();    
         
+        if(txtDiscount.getText().equals("")){
+            txtDiscount.setText("0");
+        }
         if(txtEmployeeCpf.getText().equals("")){
             JOptionPane.showMessageDialog(null,"The field Employee Code cannot be blank");
             return false;
@@ -136,6 +142,11 @@ private boolean validaCampos(){
         txtDiscount.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtDiscountCaretUpdate(evt);
+            }
+        });
+        txtDiscount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDiscountMouseClicked(evt);
             }
         });
 
@@ -268,37 +279,53 @@ private boolean validaCampos(){
     private void jButtonPrintNotePYSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintNotePYSActionPerformed
         // TODO add your handling code here:
         if(validaCampos() == true){
-        float value = Float.parseFloat(txtValue.getText());
-        float discount = Float.parseFloat(txtDiscount.getText());
-        float totalValue = value * (1-(discount/100));
-        JOptionPane.showMessageDialog(null,"Pay method: "+cbxPayMetod.getSelectedItem()+"\nValue = "+value+"\nDiscount = "+discount+"% \nTotal Value = "+totalValue);
-        
-        if(cbxPayMetod.getSelectedItem().equals("NOTE (FOR 30 DAYS)") || cbxPayMetod.getSelectedItem().equals("NOTE (FOR 60 DAYS)") ){
-            for(int i=0; i < prodVendidos.size();i++){
-                prodVendidos.get(i).setPago(false);
-                prodVendidos.get(i).setCpf(txtEmployeeCpf.getText());
-                FacadeInstance.getInstance().saveVenda(prodVendidos.get(i));
-                
-            }
-        } else{
-            for(int i=0; i < prodVendidos.size();i++){
-                prodVendidos.get(i).setPago(true);
-                prodVendidos.get(i).setCpf(txtEmployeeCpf.getText());
-                FacadeInstance.getInstance().saveVenda(prodVendidos.get(i));
-                for(int j=0; j < produtos.size(); j++){
-                    if(produtos.get(j).getCod() == prodVendidos.get(i).getCodProduto())
-                        produtos.get(j).setQuantidade(produtos.get(j).getQuantidade() - prodVendidos.get(i).getQuantidade());
+            float value = Float.parseFloat(txtValue.getText());
+            float discount = Float.parseFloat(txtDiscount.getText());
+            float totalValue = value * (1-(discount/100));
+            JOptionPane.showMessageDialog(null,"Pay method: "+cbxPayMetod.getSelectedItem()+"\nValue = "+value+"\nDiscount = "+discount+"% \nTotal Value = "+totalValue);
+
+            if(cbxPayMetod.getSelectedItem().equals("NOTE (FOR 30 DAYS)") || cbxPayMetod.getSelectedItem().equals("NOTE (FOR 60 DAYS)") ){
+                for(int i=0; i < prodVendidos.size();i++){
+                    prodVendidos.get(i).setPago(false);
+                    prodVendidos.get(i).setCpf(txtEmployeeCpf.getText());
+                    FacadeInstance.getInstance().saveVenda(prodVendidos.get(i));
+
+                    for(int j=0; j < produtos.size(); j++){
+                        if(produtos.get(j).getCod() == prodVendidos.get(i).getCodProduto())
+                            produtos.get(j).setQuantidade(produtos.get(j).getQuantidade() - prodVendidos.get(i).getQuantidade());
+                    }
+                }
+            } else{
+                for(int i=0; i < prodVendidos.size();i++){
+                    prodVendidos.get(i).setPago(true);
+                    prodVendidos.get(i).setCpf(txtEmployeeCpf.getText());
+                    FacadeInstance.getInstance().saveVenda(prodVendidos.get(i));
+                    for(int j=0; j < produtos.size(); j++){
+                        if(produtos.get(j).getCod() == prodVendidos.get(i).getCodProduto())
+                            produtos.get(j).setQuantidade(produtos.get(j).getQuantidade() - prodVendidos.get(i).getQuantidade());
+                    }
                 }
             }
-        }
-        
-       
-        Market_Screen_NEW rgf = new Market_Screen_NEW();
-        rgf.setVisible(true);
-        rgf.pack();
-        rgf.setLocationRelativeTo(null);
-        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose(); 
+
+            if( !cli.getId().equals(0L)){
+                float adicionar = Float.parseFloat(txtTotalValue.getText())/20;
+                if(adicionar >= 1){
+                    for(int i =0;i<clientes.size();i++){
+                        if(cli.getId().equals(clientes.get(i).getId())){
+                            clientes.get(i).setPontos(clientes.get(i).getPontos() + round(adicionar) );
+                            FacadeInstance.getInstance().updateCliente(clientes.get(i));
+                        }
+                    }
+                }
+
+            } 
+
+            Market_Screen_NEW rgf = new Market_Screen_NEW();
+            rgf.setVisible(true);
+            rgf.pack();
+            rgf.setLocationRelativeTo(null);
+            rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose(); 
         }
     }//GEN-LAST:event_jButtonPrintNotePYSActionPerformed
 
@@ -307,7 +334,7 @@ private boolean validaCampos(){
         List<Cliente> clientes = FacadeInstance.getInstance().getAllClientes();
         for(int i=0;i<clientes.size();i++){
             if(Objects.equals(clientes.get(i).getId(), cli.getId())){
-            cli.setPontos(clientes.get(i).getPontos());
+                cli.setPontos(clientes.get(i).getPontos());
             }
         }
         if(cli.getPontos() >= Integer.parseInt(txtDiscount.getText())){
@@ -315,11 +342,18 @@ private boolean validaCampos(){
             float discount = Float.parseFloat(txtDiscount.getText());
             float totalValue = value * (1-(discount/100));
             txtTotalValue.setText(String.valueOf(totalValue));
-        }else{
-            JOptionPane.showMessageDialog(null,"insuficient points, this client has: "+cli.getPontos()+"point(s)");
-            txtDiscount.setText("");
-         }
+        }else {
+            JOptionPane.showMessageDialog(null, "insuficient points, this client has: " + cli.getPontos() + " point(s)");
+            SwingUtilities.invokeLater(() -> {
+                txtDiscount.setText("0");
+            });
+        }
     }//GEN-LAST:event_txtDiscountCaretUpdate
+
+    private void txtDiscountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDiscountMouseClicked
+        // TODO add your handling code here:
+        txtDiscount.setText("");
+    }//GEN-LAST:event_txtDiscountMouseClicked
 
     /**
      * @param args the command line arguments

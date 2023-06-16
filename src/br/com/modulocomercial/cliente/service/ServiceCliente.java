@@ -47,10 +47,9 @@ public class ServiceCliente implements IServiceCliente{
 
     @Override
     public Cliente updateCliente(Cliente clinte) {
+         
         if(clinte == null){
             throw new BusinessException(CLIENTE_NULL);
-        } else if(daoCliente.findById(clinte.getId()) == null){
-            throw new BusinessException(CLIENTE_EXISTE);
         } else{
             return daoCliente.update(clinte);
         }
