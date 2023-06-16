@@ -22,4 +22,5 @@ public class DaoProduto extends BaseDAO<Produto> implements IDaoProduto{
         return query.getResultList();
     }
     
+    
 }

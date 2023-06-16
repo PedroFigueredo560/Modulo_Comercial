@@ -62,14 +62,14 @@ public class Principal_Screen_NEW extends javax.swing.JFrame {
     }
     
     private void makeLoginEmployee() {
-        Funcionario user = this.validarLoginEmployee();
-        if (user == null) {
+        Funcionario trabalhador = this.validarLoginEmployee();
+        if (trabalhador == null) {
             // errro
             JOptionPane.showMessageDialog(null, "Erro, usuário invalido");
 
         } else {
-            funcio = user;
-            JOptionPane.showMessageDialog(null, "Bem Vindo " + user.getNome(), "Sucesso!",
+            funcio = trabalhador;
+            JOptionPane.showMessageDialog(null, "Bem Vindo(a) " + trabalhador.getUsername(), "Sucesso!",
                     JOptionPane.INFORMATION_MESSAGE);
 
             ProfileFunc_Screen_NEW psr = new ProfileFunc_Screen_NEW();
@@ -104,11 +104,11 @@ public class Principal_Screen_NEW extends javax.swing.JFrame {
          
         if (user == null) {
             // erro
-            JOptionPane.showMessageDialog(null, "Erro, usuário invalido");
+            JOptionPane.showMessageDialog(null, "Erro, Cliente invalido");
 
         } else {
             clien = user;
-            JOptionPane.showMessageDialog(null, "Bem Vindo " + user.getNome(), "Sucesso!",
+            JOptionPane.showMessageDialog(null, "Bem Vindo(a) " + user.getUserNome(), "Sucesso!",
                     JOptionPane.INFORMATION_MESSAGE);
 
             Profile_Screen_NEW psr = new Profile_Screen_NEW();

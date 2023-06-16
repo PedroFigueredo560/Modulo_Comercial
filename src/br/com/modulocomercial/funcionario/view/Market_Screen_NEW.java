@@ -163,7 +163,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jButtonReturnMKS = new javax.swing.JButton();
         jButtonNewMKS = new javax.swing.JButton();
         jButtonDeleteMKS = new javax.swing.JButton();
-        jButtonModifyMKS = new javax.swing.JButton();
+        btnModify = new javax.swing.JButton();
         jButtonSaveMKS = new javax.swing.JButton();
         jPanelSaleMKS = new javax.swing.JPanel();
         jPanelSale2MKS = new javax.swing.JPanel();
@@ -222,7 +222,6 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jLabelCodeMKS.setForeground(new java.awt.Color(15, 27, 54));
         jLabelCodeMKS.setText("CODE:");
 
-        txtCode.setEditable(false);
         txtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodeActionPerformed(evt);
@@ -316,19 +315,24 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         jButtonNewMKS.setForeground(new java.awt.Color(15, 27, 54));
         jButtonNewMKS.setText("NEW");
         jButtonNewMKS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonNewMKS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNewMKSActionPerformed(evt);
+            }
+        });
 
         jButtonDeleteMKS.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         jButtonDeleteMKS.setForeground(new java.awt.Color(15, 27, 54));
         jButtonDeleteMKS.setText("DELETE");
         jButtonDeleteMKS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButtonModifyMKS.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        jButtonModifyMKS.setForeground(new java.awt.Color(15, 27, 54));
-        jButtonModifyMKS.setText("MODIFY");
-        jButtonModifyMKS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonModifyMKS.addActionListener(new java.awt.event.ActionListener() {
+        btnModify.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        btnModify.setForeground(new java.awt.Color(15, 27, 54));
+        btnModify.setText("MODIFY");
+        btnModify.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModifyMKSActionPerformed(evt);
+                btnModifyActionPerformed(evt);
             }
         });
 
@@ -375,7 +379,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(jButtonNewMKS)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButtonModifyMKS)
+                                    .addComponent(btnModify)
                                     .addGap(18, 18, 18)
                                     .addComponent(jButtonDeleteMKS)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -413,7 +417,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
                 .addGroup(jPanelRegisProdMKSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonReturnMKS)
                     .addComponent(jButtonNewMKS)
-                    .addComponent(jButtonModifyMKS)
+                    .addComponent(btnModify)
                     .addComponent(jButtonDeleteMKS)
                     .addComponent(jButtonSaveMKS))
                 .addContainerGap(111, Short.MAX_VALUE))
@@ -691,9 +695,53 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonModifyMKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifyMKSActionPerformed
+    private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonModifyMKSActionPerformed
+        Produto produ = new Produto();     
+        
+        if(!txtCode.getText().isEmpty()){
+            int codigo = Integer.parseInt(txtCode.getText());
+            long id = Long.parseLong(txtCode.getText());
+            for(int i=0;i<produtos.size();i++){
+                if(produtos.get(i).getId().equals(id))
+                   produ=produtos.get(i);
+            }
+            
+            produ.setCod(codigo);
+            produ.setId(id);
+            if(!txtName.getText().isEmpty()){
+                produ.setName(txtName.getText());
+            }
+            if(!txtStock.getText().isEmpty()){
+                int quantia = Integer.parseInt(txtStock.getText());
+                produ.setQuantidade(quantia);
+            }
+            if(!txtValue.getText().isEmpty()){
+                float valor= Float.parseFloat(txtValue.getText());
+                produ.setValue(valor);
+            }
+            
+            produ = FacadeInstance.getInstance().updateProduto(produ);
+                if (produ != null) {
+                    this.produtos.add(produ);
+                    this.produtos = FacadeInstance.getInstance().getAllProdutos();
+                    JOptionPane.showMessageDialog(null, "Product updated successfully");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error updating the product");
+                }
+            //limpa os campos
+                txtName.setText("");
+                txtStock.setText("");
+                txtCode.setText("");
+                txtValue.setText("");
+            //reseta a tabela    
+                preencherTabela(produtos);
+        }else{
+            JOptionPane.showMessageDialog(null, "Code ca't be null");
+        }
+        
+       
+    }//GEN-LAST:event_btnModifyActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
@@ -932,6 +980,15 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbxProductsItemStateChanged
 
+    private void jButtonNewMKSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewMKSActionPerformed
+        // TODO add your handling code here:
+        //limpa os campos
+            txtName.setText("");
+            txtStock.setText("");
+            txtCode.setText("");
+            txtValue.setText("");
+    }//GEN-LAST:event_jButtonNewMKSActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -974,6 +1031,7 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModify;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cbxClientName;
     private javax.swing.JComboBox<String> cbxProducts;
@@ -981,7 +1039,6 @@ public class Market_Screen_NEW extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCloseSale;
     private javax.swing.JButton jButtonDeleteMKS;
     private javax.swing.JButton jButtonDeleteSaleMKS;
-    private javax.swing.JButton jButtonModifyMKS;
     private javax.swing.JButton jButtonNewMKS;
     private javax.swing.JButton jButtonNewSaleMKS;
     private javax.swing.JButton jButtonReturnMKS;

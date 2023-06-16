@@ -4,23 +4,114 @@
  */
 package br.com.modulocomercial.funcionario.view;
 
+import br.com.modulocomercial.cliente.model.Cliente;
+import br.com.modulocomercial.funcionario.model.Funcionario;
+import br.com.modulocomercial.infrastructure.service.FacadeInstance;
+import br.com.modulocomercial.produto.model.Produto;
+import br.com.modulocomercial.venda.model.Venda;
 import br.com.modulocomercial.view.Principal_Screen_NEW;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author joanb
  */
 public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
-
+ Funcionario fun = Principal_Screen_NEW.funcio;
+    List<Produto> prod = FacadeInstance.getInstance().getAllProdutos();
+    List<Funcionario> funcionarios = FacadeInstance.getInstance().getAllFuncionarios();
+    List<Cliente> Clientes = FacadeInstance.getInstance().getAllClientes();
+    List<Venda> vendas = FacadeInstance.getInstance().getAllVendas();
     /**
      * Creates new form ProfileFunc_Screen
      */
     public ProfileFunc_Screen_NEW() {
         initComponents();
         this.setLocationRelativeTo(null);
+        lblCodeEmployee.setText(String.valueOf(fun.getId()));
+        lblNameEmployee.setText(fun.getNome());
+        preencherTabelaOfertas(prod);
+        preencherTabelaFunc(funcionarios);
+        preencherTabelaCliente(Clientes);
     }
 
+    
+    private void preencherTabelaOfertas(List<Produto> itens) {
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("Products");
+    modelo.addColumn("Stock");
+    modelo.addColumn("Price");
+
+    List<Produto> produtosSelecionados = obterProdutosAleatorios(itens, 5); // Define a quantidade desejada de produtos aleatórios
+
+    for (Produto produto : produtosSelecionados) {
+        Object[] linha = new Object[3];
+        linha[0] = produto.getName();
+        linha[1] = produto.getQuantidade();
+        linha[2] = produto.getValue();
+        modelo.addRow(linha);
+    }
+
+    tblProdutos.setModel(modelo);
+}
+
+private List<Produto> obterProdutosAleatorios(List<Produto> itens, int quantidade) {
+    if (itens.size() <= quantidade) {
+        return itens; // Retorna a lista original se a quantidade desejada for maior ou igual à quantidade de produtos disponíveis
+    }
+
+    List<Produto> produtosAleatorios = new ArrayList<>(quantidade);
+    List<Produto> itensDisponiveis = new ArrayList<>(itens);
+
+    Random random = new Random();
+
+    for (int i = 0; i < quantidade; i++) {
+        int indiceAleatorio = random.nextInt(itensDisponiveis.size());
+        Produto produtoAleatorio = itensDisponiveis.get(indiceAleatorio);
+        produtosAleatorios.add(produtoAleatorio);
+        itensDisponiveis.remove(indiceAleatorio);
+    }
+
+    return produtosAleatorios;
+}
+    
+     private void preencherTabelaFunc(List<Funcionario> func) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Employee");
+        modelo.addColumn("Function");
+
+        for (int i=0; i< func.size();i++ ) {
+            Object[] linha = new Object[2];
+            linha[0] = func.get(i).getNome();
+            linha[1] = func.get(i).getCargo();
+            modelo.addRow(linha);
+        }
+
+        tblFuncão.setModel(modelo);
+    }
+     
+    private void preencherTabelaCliente(List<Cliente> cliente) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Client Code");
+        modelo.addColumn("Client");
+        modelo.addColumn("Debts");
+
+        for (int i=0; i< cliente.size();i++ ) {
+            Object[] linha = new Object[3];
+            linha[0] = cliente.get(i).getId();
+            linha[1] = cliente.get(i).getNome();
+            linha[2] = "NO";
+            modelo.addRow(linha);
+        }
+
+        tblFuncão.setModel(modelo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,17 +127,17 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         jButtonSellEP2 = new javax.swing.JButton();
         jButtonSellEP = new javax.swing.JButton();
         jScrollPaneFFEP = new javax.swing.JScrollPane();
-        jTableFuncFuncEP = new javax.swing.JTable();
+        tblFuncão = new javax.swing.JTable();
         jScrollPaneClientsEP = new javax.swing.JScrollPane();
-        jTableClientInfoEP = new javax.swing.JTable();
+        tblClientInfo = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProdutos = new javax.swing.JTable();
         jLabelPanelEPS = new javax.swing.JPanel();
         jLabelEmployeeProfile = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabelCodeEP = new javax.swing.JLabel();
-        jLabelCodeEmployeeNumber = new javax.swing.JLabel();
-        jLabelNameEP = new javax.swing.JLabel();
+        lblCodeEmployee = new javax.swing.JLabel();
+        lblNameEmployee = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         ReturnButtonEP = new javax.swing.JButton();
 
@@ -120,8 +211,8 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         getContentPane().add(jButtonSellEP);
         jButtonSellEP.setBounds(630, 340, 120, 30);
 
-        jTableFuncFuncEP.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        jTableFuncFuncEP.setModel(new javax.swing.table.DefaultTableModel(
+        tblFuncão.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        tblFuncão.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -140,62 +231,62 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableFuncFuncEP.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTableFuncFuncEP.setGridColor(new java.awt.Color(0, 0, 0));
-        jTableFuncFuncEP.setRowHeight(45);
-        jTableFuncFuncEP.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jTableFuncFuncEP.setShowGrid(true);
-        jScrollPaneFFEP.setViewportView(jTableFuncFuncEP);
+        tblFuncão.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblFuncão.setGridColor(new java.awt.Color(0, 0, 0));
+        tblFuncão.setRowHeight(45);
+        tblFuncão.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        tblFuncão.setShowGrid(true);
+        jScrollPaneFFEP.setViewportView(tblFuncão);
 
         getContentPane().add(jScrollPaneFFEP);
         jScrollPaneFFEP.setBounds(30, 80, 220, 210);
 
-        jTableClientInfoEP.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
-        jTableClientInfoEP.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientInfo.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        tblClientInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "CLIENT CODE", "CLIENT", "DEBTS", "AVAILABLE CREDIT"
+                "CLIENT CODE", "CLIENT", "DEBTS"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTableClientInfoEP.setGridColor(new java.awt.Color(0, 0, 0));
-        jTableClientInfoEP.setRowHeight(30);
-        jTableClientInfoEP.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jTableClientInfoEP.setShowGrid(true);
-        jScrollPaneClientsEP.setViewportView(jTableClientInfoEP);
+        tblClientInfo.setGridColor(new java.awt.Color(0, 0, 0));
+        tblClientInfo.setRowHeight(30);
+        tblClientInfo.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        tblClientInfo.setShowGrid(true);
+        jScrollPaneClientsEP.setViewportView(tblClientInfo);
 
         getContentPane().add(jScrollPaneClientsEP);
         jScrollPaneClientsEP.setBounds(262, 80, 490, 210);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -215,11 +306,11 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable1.setRowHeight(30);
-        jTable1.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
+        tblProdutos.setGridColor(new java.awt.Color(0, 0, 0));
+        tblProdutos.setRowHeight(30);
+        tblProdutos.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        tblProdutos.setShowGrid(true);
+        jScrollPane1.setViewportView(tblProdutos);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(260, 310, 360, 180);
@@ -257,14 +348,14 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
         jLabelCodeEP.setForeground(new java.awt.Color(15, 27, 54));
         jLabelCodeEP.setText("CODE EMPLOYEE:");
 
-        jLabelCodeEmployeeNumber.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jLabelCodeEmployeeNumber.setForeground(new java.awt.Color(15, 27, 54));
-        jLabelCodeEmployeeNumber.setText("00");
+        lblCodeEmployee.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        lblCodeEmployee.setForeground(new java.awt.Color(15, 27, 54));
+        lblCodeEmployee.setText("00");
 
-        jLabelNameEP.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelNameEP.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelNameEP.setText("NAME EMPLOYEE HERE");
-        jLabelNameEP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblNameEmployee.setBackground(new java.awt.Color(255, 255, 255));
+        lblNameEmployee.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNameEmployee.setText("NAME EMPLOYEE HERE");
+        lblNameEmployee.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton1.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(15, 27, 54));
@@ -298,8 +389,8 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelCodeEP, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jLabelCodeEmployeeNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelNameEP, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblCodeEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(551, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -310,9 +401,9 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabelCodeEP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelCodeEmployeeNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCodeEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
-                .addComponent(jLabelNameEP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNameEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(ReturnButtonEP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -411,16 +502,16 @@ public class ProfileFunc_Screen_NEW extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSellEP4;
     private javax.swing.JButton jButtonSellEP5;
     private javax.swing.JLabel jLabelCodeEP;
-    private javax.swing.JLabel jLabelCodeEmployeeNumber;
     private javax.swing.JLabel jLabelEmployeeProfile;
-    private javax.swing.JLabel jLabelNameEP;
     private javax.swing.JPanel jLabelPanelEPS;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneClientsEP;
     private javax.swing.JScrollPane jScrollPaneFFEP;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTableClientInfoEP;
-    private javax.swing.JTable jTableFuncFuncEP;
+    private javax.swing.JLabel lblCodeEmployee;
+    private javax.swing.JLabel lblNameEmployee;
+    private javax.swing.JTable tblClientInfo;
+    private javax.swing.JTable tblFuncão;
+    private javax.swing.JTable tblProdutos;
     // End of variables declaration//GEN-END:variables
 }

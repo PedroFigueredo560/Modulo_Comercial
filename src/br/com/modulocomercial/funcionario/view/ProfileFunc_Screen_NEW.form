@@ -166,7 +166,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTableFuncFuncEP">
+        <Component class="javax.swing.JTable" name="tblFunc&#xe3;o">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Impact" size="14" style="0"/>
@@ -204,26 +204,20 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTableClientInfoEP">
+        <Component class="javax.swing.JTable" name="tblClientInfo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Impact" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="20">
+              <Table columnCount="3" rowCount="20">
                 <Column editable="false" title="CLIENT CODE" type="java.lang.Object"/>
                 <Column editable="false" title="CLIENT" type="java.lang.Object"/>
                 <Column editable="false" title="DEBTS" type="java.lang.Object"/>
-                <Column editable="false" title="AVAILABLE CREDIT" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -268,7 +262,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="tblProdutos">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="3" rowCount="5">
@@ -361,9 +355,9 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabelCodeEP" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                          <Component id="jLabelCodeEmployeeNumber" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="lblCodeEmployee" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabelNameEP" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="lblNameEmployee" min="-2" pref="210" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="551" max="32767" attributes="0"/>
               </Group>
@@ -378,10 +372,10 @@
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                           <Component id="jLabelCodeEP" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabelCodeEmployeeNumber" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="lblCodeEmployee" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                  <Component id="jLabelNameEP" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="lblNameEmployee" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="ReturnButtonEP" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -403,7 +397,7 @@
             <Property name="text" type="java.lang.String" value="CODE EMPLOYEE:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelCodeEmployeeNumber">
+        <Component class="javax.swing.JLabel" name="lblCodeEmployee">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Impact" size="24" style="0"/>
@@ -414,7 +408,7 @@
             <Property name="text" type="java.lang.String" value="00"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelNameEP">
+        <Component class="javax.swing.JLabel" name="lblNameEmployee">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

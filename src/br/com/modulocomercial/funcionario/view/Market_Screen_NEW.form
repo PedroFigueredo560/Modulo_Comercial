@@ -149,7 +149,7 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jButtonNewMKS" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jButtonModifyMKS" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnModify" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="jButtonDeleteMKS" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
@@ -199,7 +199,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButtonReturnMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonNewMKS" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButtonModifyMKS" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnModify" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonDeleteMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonSaveMKS" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -221,9 +221,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtCode">
-                  <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodeActionPerformed"/>
                   </Events>
@@ -393,6 +390,9 @@
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNewMKSActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonDeleteMKS">
                   <Properties>
@@ -408,7 +408,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButtonModifyMKS">
+                <Component class="javax.swing.JButton" name="btnModify">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Impact" size="14" style="0"/>
@@ -422,7 +422,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonModifyMKSActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModifyActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonSaveMKS">
